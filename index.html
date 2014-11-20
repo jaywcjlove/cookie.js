@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JSLite.cookie 本地cookie</title>
+	<script type="text/javascript" src="cookie.js"></script>
+</head>
+<body>
+
+<pre>
+## cookie APIs
+
+cookie("test","tank",1800)  //设置 cookie 的值，生存时间半个小时
+cookie("test")              //获取 cookie 的值，显示tank
+cookie("test",null)         //删除cookie test
+cookie()                    //清空cookie
+
+cookie.set("test","tank",1800)  //====cookie("test","tank",1800)
+cookie.get("test")              //====cookie("test")
+cookie.remove("test")           //====cookie("test",null)
+cookie.clear()                  //====cookie()
+
+cookie.all()                    //获取所有 cookie
+</pre>
+
+</body>
+</html>
