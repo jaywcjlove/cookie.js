@@ -41,7 +41,7 @@ cookie({"test":"123"},{
 ```
 
 | key   | value | default value |
-| ----- | --------- |
+| ----- | --------- | --------- |
 | Expires | 过期时间(天)。指定cookie的生命期。具体是值是过期日期。如果想让cookie的存在期限超过当前浏览器会话时间，就必须使用这个属性。当过了到期日期时，浏览器就可以删除cookie文件，没有任何影响。 | 浏览器关闭过期 |
 | Path   | 路径。指定与cookie关联的WEB页。值可以是一个目录，或者是一个路径。如果http://www.pc175.com/devhead/index.html 建立了一个cookie，那么在http://www.pc175.com/devhead/目录里的所有页面，以及该目录下面任何子目录里的页面都可以访问这个cookie。这就是说，在http://www.pc175.com/devhead/stories/articles 里的任何页面都可以访问http://www.pc175.com/devhead/index.html建立的cookie。但是，如果http://www.pc175.com/zdnn/ 需要访问http://www.pc175.com/devhead/index.html设置的cookes，该怎么办？这时，我们要把cookies 的path属性设置成“/”。在指定路径的时候，凡是来自同一服务器，URL里有相同路径的所有WEB页面都可以共享cookies。现在看另一个例子：如果想让 http://www.pc175.com/devhead/filters/ 和http://www.pc175.com/devhead/stories/共享cookies，就要把path设成“/devhead”。 | 默认“/” |
 | Domain | 域。指定关联的WEB服务器或域。值是域名，比如pc175.com。这是对path路径属性的一个延伸。如果我们想让 catalog.pc175.com 能够访问shoppingcart.pc175.com设置的cookies，该怎么办? 我们可以把domain属性设置成“pc175.com”，并把path属性设置成“/”。tag：不能把cookies域属性设置成与设置它的服务器的所在域不同的值。| 默认本域|
@@ -49,9 +49,10 @@ cookie({"test":"123"},{
 
 
 ### set
-设置 cookie 的值，设置时间<br/>
-`cookie.set(name,value,options)`<br/>
-效果相同`cookie(name,value,options)`<br/>
+设置 cookie 的值，设置时间
+
+`cookie.set(name,value,options)`
+效果相同`cookie(name,value,options)`
 
 ```js
 cookie("test","tank",30)    //设置cookie，并设置过期时间30天
@@ -70,9 +71,10 @@ cookie({"test":"123","test2":"456"},{  //批量设置
 ```
 
 ### get
-获取 cookie 的值<br/>
-`cookie.get(name)`<br/>
-效果相同`cookie(name)`<br/>
+获取 cookie 的值
+
+`cookie.get(name)`
+效果相同`cookie(name)`
 
 ```js
 store.get("wcj1") //获取wcj1的字符串数据
@@ -80,9 +82,10 @@ store("wcj1") //功能同上
 ```
 
 ### clear
-清空cookie<br/>
-`cookie.clear() `<br/>
-效果相同`cookie()`<br/>
+清空cookie
+
+`cookie.clear() `
+效果相同`cookie()`
 
 ```js
 cookie()
@@ -90,9 +93,10 @@ cookie.clear(
 ```
 
 ### remove
-删除cookie<br/>
-`cookie.remove(name)`<br/> 
-效果相同`cookie(name,null)`<br/>
+删除cookie
+
+`cookie.remove(name)` 
+效果相同`cookie(name,null)`
 
 ```js
 cookie.remove("test") //删除cookie test
