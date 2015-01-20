@@ -57,7 +57,7 @@
 				var cookies = document.cookie.split('; '),result = {};
 				for (var i = 0, l = cookies.length; i < l; i++) {
 					var item = cookies[i].split('=');
-					result[decodeURIComponent(item[0])] = decodeURIComponent(item[1]);
+					result[unescape(item[0])] = unescape(item[1]);
 				}
 				return result;
 			}
