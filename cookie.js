@@ -78,6 +78,7 @@
 		}
 	}
 	cookie=function (name, value, options){
+		console.log(this)
 		var argm = arguments,
 		_cookie=function(){
 			if (argm.length === 0) return cookie.clear();
@@ -93,5 +94,5 @@
 	//如果有 JSLite ，则同样扩展到 JSLite ?类似jQuery
 	// http://jaywcjlove.github.io/JSLite/
 	if( window.JSLite ) window.JSLite.cookie = cookie;
-	else window.cookie = cookie
+	if(!window.cookie) window.cookie = cookie;
 })(window);
