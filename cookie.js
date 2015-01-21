@@ -89,8 +89,7 @@
 		}
 		return _cookie()
 	}
-	//IE不提供这个__proto__原型对象，可以这里判断
-	cookie.__proto__ = Cookie.cookieAPI;
+	for (var a in Cookie.cookieAPI) cookie[a]=Cookie.cookieAPI[a];
 	//如果有 JSLite ，则同样扩展到 JSLite ?类似jQuery
 	// http://jaywcjlove.github.io/JSLite/
 	if( window.JSLite ) window.JSLite.cookie = cookie;
