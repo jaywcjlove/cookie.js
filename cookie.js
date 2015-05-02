@@ -1,9 +1,19 @@
 /**
  * Copyright © kacper.wang 
  * http://jaywcjlove.github.io
- * 小弟来自【热璞科技】
  */
-;(function(window){
+;(function(root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define([], factory);
+    } else if (typeof exports === 'object') {
+        // Node.js
+        module.exports = factory();
+    } else {
+        // Browser globals (root is window)
+        root.cookie = factory();
+    }
+}(this, function(root, undefined) {
 	var Cookie = {
 		cookieAPI:{
 			get: function(name){
@@ -91,8 +101,5 @@
 		return _cookie()
 	}
 	for (var a in Cookie.cookieAPI) cookie[a]=Cookie.cookieAPI[a];
-	//如果有 JSLite ，则同样扩展到 JSLite ?类似jQuery
-	// http://jaywcjlove.github.io/JSLite/
-	if( window.JSLite ) window.JSLite.cookie = cookie;
-	if(!window.cookie) window.cookie = cookie;
-})(window);
+    return cookie
+}));
