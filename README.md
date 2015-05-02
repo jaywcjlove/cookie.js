@@ -1,3 +1,21 @@
+[![](https://img.shields.io/github/issues/jaywcjlove/cookie.js.svg)](https://github.com/jaywcjlove/cookie.js/issues) [![](https://img.shields.io/github/forks/jaywcjlove/cookie.js.svg)](https://github.com/jaywcjlove/cookie.js/network) [![](https://img.shields.io/github/stars/jaywcjlove/cookie.js.svg)](https://github.com/jaywcjlove/cookie.js/stargazers) [![](https://img.shields.io/github/release/jaywcjlove/cookie.js.svg)](https://github.com/jaywcjlove/store.js/releases)
+
+
+## 安装
+
+### bower
+
+```
+$ bower install cookiejs
+```
+
+### npm
+
+```
+$ npm install cookiejs
+```
+
+
 ## cookie APIs
 
 ```js
