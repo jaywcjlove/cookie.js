@@ -1,0 +1,19 @@
+{
+  "name": "cookiejs",
+  "version": "1.0.1",
+  "description": "Local storage cookie package provides a simple API",
+  "main": "cookie.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaywcjlove/cookie.js.git"
+  },
+  "keywords": [
+    "cookiejs"
+  ],
+  "author": "kenny wang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jaywcjlove/cookie.js/issues"
+  },
+  "homepage": "https://github.com/jaywcjlove/cookie.js"
+}
