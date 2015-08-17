@@ -84,7 +84,7 @@ store("wcj1") //功能同上
 
 ```js
 cookie()
-cookie.clear(
+cookie.clear()
 ```
 
 ### remove
