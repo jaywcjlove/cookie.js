@@ -1,27 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>JSLite.cookie 本地cookie</title>
-	<script type="text/javascript" src="cookie.js"></script>
+    <meta charset="UTF-8">
+    <title>cookie.js</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
+<div class="nav">
+<div class="logo">cookie.js</div>
+<ul><li class="active"><a href="index.html">首页</a></li></ul></div>
 
-<pre>
-## cookie APIs
 
-cookie("test","tank",1800)  //设置 cookie 的值，生存时间半个小时
-cookie("test")              //获取 cookie 的值，显示tank
-cookie("test",null)         //删除cookie test
-cookie()                    //清空cookie
+<div class="forkgithub"><a target="_blank" href="https://github.com/jaywcjlove/cookie.js"></a></div>
 
-cookie.set("test","tank",1800)  //====cookie("test","tank",1800)
-cookie.get("test")              //====cookie("test")
-cookie.remove("test")           //====cookie("test",null)
-cookie.clear()                  //====cookie()
+<div class="warpper">
 
-cookie.all()                    //获取所有 cookie
-</pre>
+    <div class="page-toc">
+        <ul><li><a href="#安装">安装</a><ul><li><a href="#bower">bower</a></li><li><a href="#npm">npm</a></li></ul></li><li><a href="#APIs">APIs</a><ul><li><a href="#批量设置cookie的值">批量设置cookie的值</a></li><li><a href="#set">set</a></li><li><a href="#get">get</a></li><li><a href="#clear">clear</a></li><li><a href="#remove">remove</a></li><li><a href="#expires过期时间、 path路径、 domain域、以及 secure安全。">expires过期时间、 path路径、 domain域、以及 secure安全。</a></li></ul></li><li><a href="#测试例子">测试例子</a></li></ul>
+    </div>
+    
+    <div class="content markdown-body">
+        <p><a href="https://github.com/jaywcjlove/cookie.js/issues"><img src="https://img.shields.io/github/issues/jaywcjlove/cookie.js.svg" alt=""></a> <a href="https://github.com/jaywcjlove/cookie.js/network"><img src="https://img.shields.io/github/forks/jaywcjlove/cookie.js.svg" alt=""></a> <a href="https://github.com/jaywcjlove/cookie.js/stargazers"><img src="https://img.shields.io/github/stars/jaywcjlove/cookie.js.svg" alt=""></a> <a href="https://github.com/jaywcjlove/cookie.js/releases"><img src="https://img.shields.io/github/release/jaywcjlove/cookie.js.svg" alt=""></a></p>
+<h1 id="&#x5B89;&#x88C5;">&#x5B89;&#x88C5; <a href="#&#x5B89;&#x88C5;"> # </a></h1>
+<h2 id="bower">bower <a href="#bower"> # </a></h2>
+<pre><code>$ bower install cookiejs
+</code></pre><h2 id="npm">npm <a href="#npm"> # </a></h2>
+<pre><code>$ npm install cookiejs
+</code></pre><h1 id="APIs">APIs <a href="#APIs"> # </a></h1>
+<pre><code class="lang-js">cookie(<span class="hljs-string">&quot;test&quot;</span>,<span class="hljs-string">&quot;tank&quot;</span>,<span class="hljs-number">1800</span>)  <span class="hljs-comment">//&#x8BBE;&#x7F6E; cookie &#x7684;&#x503C;&#xFF0C;&#x751F;&#x5B58;&#x65F6;&#x95F4;&#x534A;&#x4E2A;&#x5C0F;&#x65F6;</span>
+cookie(<span class="hljs-string">&quot;test&quot;</span>)              <span class="hljs-comment">//&#x83B7;&#x53D6; cookie &#x7684;&#x503C;&#xFF0C;&#x663E;&#x793A;tank</span>
+cookie(<span class="hljs-string">&quot;test&quot;</span>,<span class="hljs-literal">null</span>)         <span class="hljs-comment">//&#x5220;&#x9664;cookie test</span>
+cookie()                    <span class="hljs-comment">//&#x6E05;&#x7A7A;cookie</span>
+
+cookie.set(<span class="hljs-string">&quot;test&quot;</span>,<span class="hljs-string">&quot;tank&quot;</span>,<span class="hljs-number">1800</span>)  <span class="hljs-comment">//====cookie(&quot;test&quot;,&quot;tank&quot;,1800)</span>
+cookie.get(<span class="hljs-string">&quot;test&quot;</span>)              <span class="hljs-comment">//====cookie(&quot;test&quot;)</span>
+cookie.remove(<span class="hljs-string">&quot;test&quot;</span>)           <span class="hljs-comment">//====cookie(&quot;test&quot;,null)</span>
+cookie.clear()                  <span class="hljs-comment">//====cookie()</span>
+
+cookie.all()                    <span class="hljs-comment">//&#x83B7;&#x53D6;&#x6240;&#x6709; cookie</span>
+</code></pre>
+<h2 id="&#x6279;&#x91CF;&#x8BBE;&#x7F6E;cookie&#x7684;&#x503C;">&#x6279;&#x91CF;&#x8BBE;&#x7F6E;cookie&#x7684;&#x503C; <a href="#&#x6279;&#x91CF;&#x8BBE;&#x7F6E;cookie&#x7684;&#x503C;"> # </a></h2>
+<pre><code class="lang-js">cookie.set({
+   name1: <span class="hljs-string">&apos;value1&apos;</span>,
+   name2: <span class="hljs-string">&apos;value2&apos;</span>
+});
+</code></pre>
+<h2 id="set">set <a href="#set"> # </a></h2>
+<p>&#x8BBE;&#x7F6E; cookie &#x7684;&#x503C;&#xFF0C;&#x8BBE;&#x7F6E;&#x65F6;&#x95F4;</p>
+<p><code>cookie.set(name,value,options)</code>
+&#x6548;&#x679C;&#x76F8;&#x540C;<code>cookie(name,value,options)</code></p>
+<pre><code class="lang-js">cookie(<span class="hljs-string">&quot;test&quot;</span>,<span class="hljs-string">&quot;tank&quot;</span>,<span class="hljs-number">30</span>)    <span class="hljs-comment">//&#x8BBE;&#x7F6E;cookie&#xFF0C;&#x5E76;&#x8BBE;&#x7F6E;&#x8FC7;&#x671F;&#x65F6;&#x95F4;30&#x5929;</span>
+
+cookie(<span class="hljs-string">&quot;test&quot;</span>,<span class="hljs-string">&quot;123&quot;</span>,{       <span class="hljs-comment">//&#x8BBE;&#x7F6E;cookie&#xFF0C;&#x5E76;&#x8BBE;&#x7F6E;&#x8FC7;&#x671F;&#x65F6;&#x95F4;7&#x5929;&#xFF0C;&#x8DEF;&#x5F84;&#x3001;&#x57DF;</span>
+    <span class="hljs-string">&quot;expires&quot;</span>: <span class="hljs-number">7</span>,
+    <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&apos;/&apos;</span>,
+    <span class="hljs-string">&quot;domain&quot;</span>:<span class="hljs-string">&quot;&quot;</span>
+});
+
+cookie({<span class="hljs-string">&quot;test&quot;</span>:<span class="hljs-string">&quot;123&quot;</span>,<span class="hljs-string">&quot;test2&quot;</span>:<span class="hljs-string">&quot;456&quot;</span>},{  <span class="hljs-comment">//&#x6279;&#x91CF;&#x8BBE;&#x7F6E;</span>
+    <span class="hljs-string">&quot;expires&quot;</span>: <span class="hljs-number">7</span>,
+    <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&apos;/&apos;</span>,
+    <span class="hljs-string">&quot;domain&quot;</span>:<span class="hljs-string">&quot;&quot;</span>
+});
+</code></pre>
+<h2 id="get">get <a href="#get"> # </a></h2>
+<p>&#x83B7;&#x53D6; cookie &#x7684;&#x503C;</p>
+<p><code>cookie.get(name)</code>
+&#x6548;&#x679C;&#x76F8;&#x540C;<code>cookie(name)</code></p>
+<pre><code class="lang-js">store.get(<span class="hljs-string">&quot;wcj1&quot;</span>) <span class="hljs-comment">//&#x83B7;&#x53D6;wcj1&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x6570;&#x636E;</span>
+store(<span class="hljs-string">&quot;wcj1&quot;</span>) <span class="hljs-comment">//&#x529F;&#x80FD;&#x540C;&#x4E0A;</span>
+</code></pre>
+<h2 id="clear">clear <a href="#clear"> # </a></h2>
+<p>&#x6E05;&#x7A7A;cookie</p>
+<p><code>cookie.clear()</code>
+&#x6548;&#x679C;&#x76F8;&#x540C;<code>cookie()</code></p>
+<pre><code class="lang-js">cookie()
+cookie.clear()
+</code></pre>
+<h2 id="remove">remove <a href="#remove"> # </a></h2>
+<p>&#x5220;&#x9664;cookie</p>
+<p><code>cookie.remove(name)</code> 
+&#x6548;&#x679C;&#x76F8;&#x540C;<code>cookie(name,null)</code></p>
+<pre><code class="lang-js">cookie.remove(<span class="hljs-string">&quot;test&quot;</span>) <span class="hljs-comment">//&#x5220;&#x9664;cookie test</span>
+cookie(<span class="hljs-string">&quot;test&quot;</span>,<span class="hljs-literal">null</span>) <span class="hljs-comment">//&#x8FD9;&#x6837;&#x4E5F;&#x662F; &#x5220;&#x9664;cookie test</span>
+</code></pre>
+<h2 id="expires&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x3001; path&#x8DEF;&#x5F84;&#x3001; domain&#x57DF;&#x3001;&#x4EE5;&#x53CA; secure&#x5B89;&#x5168;&#x3002;">expires&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x3001; path&#x8DEF;&#x5F84;&#x3001; domain&#x57DF;&#x3001;&#x4EE5;&#x53CA; secure&#x5B89;&#x5168;&#x3002; <a href="#expires&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x3001; path&#x8DEF;&#x5F84;&#x3001; domain&#x57DF;&#x3001;&#x4EE5;&#x53CA; secure&#x5B89;&#x5168;&#x3002;"> # </a></h2>
+<pre><code class="lang-js">cookie(<span class="hljs-string">&quot;test&quot;</span>,<span class="hljs-string">&quot;123&quot;</span>,{
+    <span class="hljs-string">&quot;expires&quot;</span>: <span class="hljs-number">7</span>,
+    <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&apos;/&apos;</span>,
+    <span class="hljs-string">&quot;domain&quot;</span>:<span class="hljs-string">&quot;&quot;</span>
+});
+cookie({<span class="hljs-string">&quot;test&quot;</span>:<span class="hljs-string">&quot;123&quot;</span>},{
+    <span class="hljs-string">&quot;expires&quot;</span>: <span class="hljs-number">7</span>,
+    <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&apos;/&apos;</span>,
+    <span class="hljs-string">&quot;domain&quot;</span>:<span class="hljs-string">&quot;&quot;</span>
+});
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">key</th>
+<th style="text-align:left">value</th>
+<th style="text-align:left">default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>expires</code></td>
+<td style="text-align:left">&#x8FC7;&#x671F;&#x65F6;&#x95F4;(&#x5929;)&#x3002;&#x6307;&#x5B9A;cookie&#x7684;&#x751F;&#x547D;&#x671F;&#x3002;&#x5177;&#x4F53;&#x662F;&#x503C;&#x662F;&#x8FC7;&#x671F;&#x65E5;&#x671F;&#x3002;&#x5982;&#x679C;&#x60F3;&#x8BA9;cookie&#x7684;&#x5B58;&#x5728;&#x671F;&#x9650;&#x8D85;&#x8FC7;&#x5F53;&#x524D;&#x6D4F;&#x89C8;&#x5668;&#x4F1A;&#x8BDD;&#x65F6;&#x95F4;&#xFF0C;&#x5C31;&#x5FC5;&#x987B;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x3002;&#x5F53;&#x8FC7;&#x4E86;&#x5230;&#x671F;&#x65E5;&#x671F;&#x65F6;&#xFF0C;&#x6D4F;&#x89C8;&#x5668;&#x5C31;&#x53EF;&#x4EE5;&#x5220;&#x9664;cookie&#x6587;&#x4EF6;&#xFF0C;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x5F71;&#x54CD;&#x3002;</td>
+<td style="text-align:left">&#x6D4F;&#x89C8;&#x5668;&#x5173;&#x95ED;&#x8FC7;&#x671F;</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>domain</code></td>
+<td style="text-align:left">&#x57DF;&#x3002;&#x6307;&#x5B9A;&#x5173;&#x8054;&#x7684;WEB&#x670D;&#x52A1;&#x5668;&#x6216;&#x57DF;&#x3002;&#x503C;&#x662F;&#x57DF;&#x540D;&#xFF0C;&#x6BD4;&#x5982;pc175.com&#x3002;&#x8FD9;&#x662F;&#x5BF9;path&#x8DEF;&#x5F84;&#x5C5E;&#x6027;&#x7684;&#x4E00;&#x4E2A;&#x5EF6;&#x4F38;&#x3002;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x60F3;&#x8BA9; catalog.pc175.com &#x80FD;&#x591F;&#x8BBF;&#x95EE;shoppingcart.pc175.com&#x8BBE;&#x7F6E;&#x7684;cookies&#xFF0C;&#x8BE5;&#x600E;&#x4E48;&#x529E;? &#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x628A;domain&#x5C5E;&#x6027;&#x8BBE;&#x7F6E;&#x6210;&#x201C;pc175.com&#x201D;&#xFF0C;&#x5E76;&#x628A;path&#x5C5E;&#x6027;&#x8BBE;&#x7F6E;&#x6210;&#x201C;/&#x201D;&#x3002;tag&#xFF1A;&#x4E0D;&#x80FD;&#x628A;cookies&#x57DF;&#x5C5E;&#x6027;&#x8BBE;&#x7F6E;&#x6210;&#x4E0E;&#x8BBE;&#x7F6E;&#x5B83;&#x7684;&#x670D;&#x52A1;&#x5668;&#x7684;&#x6240;&#x5728;&#x57DF;&#x4E0D;&#x540C;&#x7684;&#x503C;&#x3002;</td>
+<td style="text-align:left">&#x9ED8;&#x8BA4;&#x672C;&#x57DF;</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>path</code></td>
+<td style="text-align:left">&#x8DEF;&#x5F84;&#x3002;&#x6307;&#x5B9A;&#x4E0E;cookie&#x5173;&#x8054;&#x7684;WEB&#x9875;&#x3002;&#x503C;&#x53EF;&#x4EE5;&#x662F;&#x4E00;&#x4E2A;&#x76EE;&#x5F55;&#xFF0C;&#x6216;&#x8005;&#x662F;&#x4E00;&#x4E2A;&#x8DEF;&#x5F84;&#x3002;&#x5982;&#x679C;<a href="http://www.pc175.com/devhead/index.html">http://www.pc175.com/devhead/index.html</a> &#x5EFA;&#x7ACB;&#x4E86;&#x4E00;&#x4E2A;cookie&#xFF0C;&#x90A3;&#x4E48;&#x5728;<a href="http://www.pc175.com/devhead/&#x76EE;&#x5F55;&#x91CC;&#x7684;&#x6240;&#x6709;&#x9875;&#x9762;&#xFF0C;&#x4EE5;&#x53CA;&#x8BE5;&#x76EE;&#x5F55;&#x4E0B;&#x9762;&#x4EFB;&#x4F55;&#x5B50;&#x76EE;&#x5F55;&#x91CC;&#x7684;&#x9875;&#x9762;&#x90FD;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x8FD9;&#x4E2A;cookie&#x3002;&#x8FD9;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x5728;http://www.pc175.com/devhead/stories/articles">http://www.pc175.com/devhead/&#x76EE;&#x5F55;&#x91CC;&#x7684;&#x6240;&#x6709;&#x9875;&#x9762;&#xFF0C;&#x4EE5;&#x53CA;&#x8BE5;&#x76EE;&#x5F55;&#x4E0B;&#x9762;&#x4EFB;&#x4F55;&#x5B50;&#x76EE;&#x5F55;&#x91CC;&#x7684;&#x9875;&#x9762;&#x90FD;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x8FD9;&#x4E2A;cookie&#x3002;&#x8FD9;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x5728;http://www.pc175.com/devhead/stories/articles</a> &#x91CC;&#x7684;&#x4EFB;&#x4F55;&#x9875;&#x9762;&#x90FD;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;<a href="http://www.pc175.com/devhead/index.html&#x5EFA;&#x7ACB;&#x7684;cookie&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x5982;&#x679C;http://www.pc175.com/zdnn/">http://www.pc175.com/devhead/index.html&#x5EFA;&#x7ACB;&#x7684;cookie&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x5982;&#x679C;http://www.pc175.com/zdnn/</a> &#x9700;&#x8981;&#x8BBF;&#x95EE;<a href="http://www.pc175.com/devhead/index.html&#x8BBE;&#x7F6E;&#x7684;cookes&#xFF0C;&#x8BE5;&#x600E;&#x4E48;&#x529E;&#xFF1F;&#x8FD9;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x8981;&#x628A;cookies">http://www.pc175.com/devhead/index.html&#x8BBE;&#x7F6E;&#x7684;cookes&#xFF0C;&#x8BE5;&#x600E;&#x4E48;&#x529E;&#xFF1F;&#x8FD9;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x8981;&#x628A;cookies</a> &#x7684;path&#x5C5E;&#x6027;&#x8BBE;&#x7F6E;&#x6210;&#x201C;/&#x201D;&#x3002;&#x5728;&#x6307;&#x5B9A;&#x8DEF;&#x5F84;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x51E1;&#x662F;&#x6765;&#x81EA;&#x540C;&#x4E00;&#x670D;&#x52A1;&#x5668;&#xFF0C;URL&#x91CC;&#x6709;&#x76F8;&#x540C;&#x8DEF;&#x5F84;&#x7684;&#x6240;&#x6709;WEB&#x9875;&#x9762;&#x90FD;&#x53EF;&#x4EE5;&#x5171;&#x4EAB;cookies&#x3002;&#x73B0;&#x5728;&#x770B;&#x53E6;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;&#x5982;&#x679C;&#x60F3;&#x8BA9; <a href="http://www.pc175.com/devhead/filters/">http://www.pc175.com/devhead/filters/</a> &#x548C;<a href="http://www.pc175.com/devhead/stories/&#x5171;&#x4EAB;cookies&#xFF0C;&#x5C31;&#x8981;&#x628A;path&#x8BBE;&#x6210;&#x201C;/devhead&#x201D;&#x3002;">http://www.pc175.com/devhead/stories/&#x5171;&#x4EAB;cookies&#xFF0C;&#x5C31;&#x8981;&#x628A;path&#x8BBE;&#x6210;&#x201C;/devhead&#x201D;&#x3002;</a></td>
+<td style="text-align:left">&#x9ED8;&#x8BA4; <code>/</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>secure</code></td>
+<td style="text-align:left">&#x5B89;&#x5168;&#x3002;&#x6307;&#x5B9A;cookie&#x7684;&#x503C;&#x901A;&#x8FC7;&#x7F51;&#x7EDC;&#x5982;&#x4F55;&#x5728;&#x7528;&#x6237;&#x548C;WEB&#x670D;&#x52A1;&#x5668;&#x4E4B;&#x95F4;&#x4F20;&#x9012;&#x3002;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x7684;&#x503C;&#x6216;&#x8005;&#x662F;&#x201C;secure&#x201D;&#xFF0C;&#x6216;&#x8005;&#x4E3A;&#x7A7A;&#x3002;&#x7F3A;&#x7701;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8BE5;&#x5C5E;&#x6027;&#x4E3A;&#x7A7A;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x4F7F;&#x7528;&#x4E0D;&#x5B89;&#x5168;&#x7684;HTTP&#x8FDE;&#x63A5;&#x4F20;&#x9012;&#x6570;&#x636E;&#x3002;&#x5982;&#x679C;&#x4E00;&#x4E2A; cookie &#x6807;&#x8BB0;&#x4E3A;secure&#xFF0C;&#x90A3;&#x4E48;&#xFF0C;&#x5B83;&#x4E0E;WEB&#x670D;&#x52A1;&#x5668;&#x4E4B;&#x95F4;&#x5C31;&#x901A;&#x8FC7;HTTPS&#x6216;&#x8005;&#x5176;&#x5B83;&#x5B89;&#x5168;&#x534F;&#x8BAE;&#x4F20;&#x9012;&#x6570;&#x636E;&#x3002;&#x4E0D;&#x8FC7;&#xFF0C;&#x8BBE;&#x7F6E;&#x4E86;secure&#x5C5E;&#x6027;&#x4E0D;&#x4EE3;&#x8868;&#x5176;&#x4ED6;&#x4EBA;&#x4E0D;&#x80FD;&#x770B;&#x5230;&#x4F60;&#x673A;&#x5668;&#x672C;&#x5730;&#x4FDD;&#x5B58;&#x7684;cookie&#x3002;&#x6362;&#x53E5;&#x8BDD;&#x8BF4;&#xFF0C;&#x628A;cookie&#x8BBE;&#x7F6E;&#x4E3A;secure&#xFF0C;&#x53EA;&#x4FDD;&#x8BC1;cookie&#x4E0E;WEB&#x670D;&#x52A1;&#x5668;&#x4E4B;&#x95F4;&#x7684;&#x6570;&#x636E;&#x4F20;&#x8F93;&#x8FC7;&#x7A0B;&#x52A0;&#x5BC6;&#xFF0C;&#x800C;&#x4FDD;&#x5B58;&#x5728;&#x672C;&#x5730;&#x7684;cookie&#x6587;&#x4EF6;&#x5E76;&#x4E0D;&#x52A0;&#x5BC6;&#x3002;&#x5982;&#x679C;&#x60F3;&#x8BA9;&#x672C;&#x5730;cookie&#x4E5F;&#x52A0;&#x5BC6;&#xFF0C;&#x5F97;&#x81EA;&#x5DF1;&#x52A0;&#x5BC6;&#x6570;&#x636E;&#x3002;</td>
+<td style="text-align:left"><code>false</code></td>
+</tr>
+</tbody>
+</table>
+<h1 id="&#x6D4B;&#x8BD5;&#x4F8B;&#x5B50;">&#x6D4B;&#x8BD5;&#x4F8B;&#x5B50; <a href="#&#x6D4B;&#x8BD5;&#x4F8B;&#x5B50;"> # </a></h1>
+<blockquote>
+<p>&#x5F00;&#x542F;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x8C03;&#x8BD5;&#x5DE5;&#x5177;&#xFF0C;&#x8C03;&#x8BD5;&#x770B;&#x6D4F;&#x89C8;&#x5668;&#x6570;&#x636E;&#x662F;&#x5426;&#x8BBE;&#x7F6E;&#x6210;&#x529F;&#xFF01;</p>
+</blockquote>
+<script type="text/javascript" src="https://rawgit.com/jaywcjlove/cookie.js/master/cookie.js"></script>
+
+<p><a href="javascript:getcookie()">&#x83B7;&#x53D6;&#x6240;&#x6709;cookie</a>&#xFF0C;
+<a href="javascript:cleancookie()">&#x6E05;&#x7A7A;cookie</a></p>
+<p><input type="text" id="cookieval" value=""> 
+<a href="javascript:setcookie()">&#x8BBE;&#x7F6E;cookie</a></p>
+<div id="cookieinfo"></div>
+
+<script type="text/javascript">
+    var val = document.getElementById("cookieval"),
+        inof = document.getElementById('cookieinfo');
+
+    val.value = '{"name1":"value1"}';
+    function getcookie(){
+
+        inof.innerHTML = JSON.stringify(cookie.all())
+
+    }
+    function setcookie(){
+        cookie(JSON.parse(val.value))
+        inof.innerHTML = '设置成功！' +  val.value;
+    }
+    function cleancookie(){
+        cookie();
+        inof.innerHTML = '清空成功！'
+    }
+</script>
+
+        <div class="copyright">Powered by <a href="https://github.com/jaywcjlove/idoc" target="_blank">idoc</a>. Dependence <a href="https://nodejs.org">Node.js</a> run.</div>
+    </div>
+    
+</div>
+
 
 </body>
 </html>
