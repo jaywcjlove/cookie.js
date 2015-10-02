@@ -1,6 +1,6 @@
 {
     "name": "cookie.js",
-    "version": "1.0.3",
+    "version": "0.0.1",
     "description": "Local storage cookie package provides a simple API",
     "keywords": [
         "cookie",
