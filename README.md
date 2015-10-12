@@ -7,8 +7,9 @@
 
 ### bower
 
-```
-$ bower install cookiejs
+```sh
+$ bower install icookie
+$ bower info icookie # Run bower info icookie to list the available versions.
 ```
 
 ### npm
