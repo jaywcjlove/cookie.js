@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/jaywcjlove/cookie.js/issues"
   },
-  "homepage": "https://github.com/jaywcjlove/cookie.js"
+  "homepage": "https://github.com/jaywcjlove/cookie.js",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-dist": "0.0.6",
+    "load-grunt-tasks": "^3.3.0"
+  }
 }

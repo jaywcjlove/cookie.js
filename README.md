@@ -17,6 +17,16 @@ $ bower install cookiejs
 $ npm install cookiejs
 ```
 
+生成压缩文件和map文件
+
+```bash
+$ grunt dist
+
+# › dist/cookie.js: 3.5 KiB
+# › dist/cookie.min.js: 1.8 KiB
+# › dist/cookie.min.map: 2.9 KiB
+```
+
 
 ## cookie APIs
 
