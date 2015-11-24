@@ -1,7 +1,7 @@
 {
   "name": "cookiejs",
   "main": "cookie.js",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "authors": [
     "kenny wang <wowohoo@qq.com>"
   ],
