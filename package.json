@@ -2,7 +2,7 @@
   "name": "cookiejs",
   "version": "1.0.3",
   "description": "Local storage cookie package provides a simple API",
-  "main": "cookie.js",
+  "main": "dist/cookie.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/jaywcjlove/cookie.js.git"
@@ -17,9 +17,11 @@
   },
   "homepage": "https://github.com/jaywcjlove/cookie.js",
   "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-contrib-watch": "^0.6.1",
-    "grunt-dist": "0.0.6",
-    "load-grunt-tasks": "^3.3.0"
+    "gulp": "^3.9.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemap": "^1.0.1",
+    "gulp-uglify": "^1.5.1",
+    "gulp-umd": "^0.2.0",
+    "gulp-watch": "^4.3.5"
   }
 }

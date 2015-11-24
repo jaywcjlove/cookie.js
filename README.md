@@ -5,16 +5,15 @@
 
 ## 安装
 
-### bower
+```bash
+# 安装依赖
+$ npm install
 
-```sh
+# bower
 $ bower install icookie
 $ bower info icookie # Run bower info icookie to list the available versions.
-```
 
-### npm
-
-```
+# npm
 $ npm install cookiejs
 ```
 
