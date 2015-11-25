@@ -2,26 +2,29 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>JSLite.cookie 本地cookie</title>
-	<script type="text/javascript" src="cookie.js"></script>
+	<title>cookie单元测试</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../node_modules/mocha/mocha.css" />
 </head>
 <body>
-
-<pre>
-## cookie APIs
-
-cookie("test","tank",1800)  //设置 cookie 的值，生存时间半个小时
-cookie("test")              //获取 cookie 的值，显示tank
-cookie("test",null)         //删除cookie test
-cookie()                    //清空cookie
-
-cookie.set("test","tank",1800)  //====cookie("test","tank",1800)
-cookie.get("test")              //====cookie("test")
-cookie.remove("test")           //====cookie("test",null)
-cookie.clear()                  //====cookie()
-
-cookie.all()                    //获取所有 cookie
-</pre>
-
+    <!-- I you use Backbone Model you will need JSON -->
+    <div id="mocha"></div>
+    <script type="text/javascript" src="../dist/cookie.js"></script>
+    <script type="text/javascript" src="../node_modules/chai/chai.js"></script>
+    <script src="../node_modules/mocha/mocha.js" type="text/javascript" ></script>
+    <script>mocha.setup('bdd')</script>
+    <script src="unit/cookie.js"></script>
+    <script>
+        var expect = chai.expect;
+        var assert = chai.assert;
+        if (window.mochaPhantomJS) {
+            mochaPhantomJS.run();
+        } else {
+            mocha.run();
+        }
+    </script>
+    <div id="test"></div>
 </body>
 </html>
+
+

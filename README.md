@@ -20,13 +20,16 @@ $ npm install cookiejs
 生成压缩文件和map文件
 
 ```bash
-$ grunt dist
-
-# › dist/cookie.js: 3.5 KiB
-# › dist/cookie.min.js: 1.8 KiB
-# › dist/cookie.min.map: 2.9 KiB
+$ gulp build    # 生成带UMD的js原文件
+$ gulp min      # 生成压缩文件
+$ gulp map      # 生成.map文件
 ```
 
+## 测试
+
+```
+$ npm test
+```
 
 ## cookie APIs
 

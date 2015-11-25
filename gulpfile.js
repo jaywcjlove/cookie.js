@@ -6,7 +6,7 @@ var sourcemap = require('gulp-sourcemap');
 var umd = require('gulp-umd')
 
 
-gulp.task('default', ['build','map']);
+gulp.task('default', ['build','min','map']);
 
 gulp.task('watch', function (cb) {
     watch('src/*.js', ['build']);
@@ -27,6 +27,11 @@ gulp.task('build',function(){
         }))
         .pipe(gulp.dest('./dist'));
 
+
+})
+
+
+gulp.task('min',function(){
     gulp.src('dist/cookie.js')
         .pipe(uglify({
             mangle: false,
@@ -38,7 +43,6 @@ gulp.task('build',function(){
             suffix:".min"
         }))
         .pipe(gulp.dest('./dist'));
-
 })
 
 
