@@ -15,18 +15,14 @@ gulp.task('watch', function (cb) {
 gulp.task('build',function(){
     gulp.src('src/*.js')
         .pipe(umd({
-            dependencies: function(file) {
-                return ["cookie"];
-            },
             exports: function(file) {
-                return "cookie"
+                return 'cookie';
             },
             namespace: function(file) {
-                return "cookie"
+                return 'cookie';
             }
         }))
         .pipe(gulp.dest('./dist'));
-
 
 })
 

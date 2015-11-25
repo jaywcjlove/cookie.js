@@ -1,12 +1,12 @@
 ;(function(root, factory) {
   if (typeof define === 'function' && define.amd) {
-    define(['cookie'], factory);
+    define([], factory);
   } else if (typeof exports === 'object') {
-    module.exports = factory(require('cookie'));
+    module.exports = factory();
   } else {
-    root.cookie = factory(root.cookie);
+    root.cookie = factory();
   }
-}(this, function(cookie) {
+}(this, function() {
 var Cookie = {
 	cookieAPI:{
 		get: function(name){
