@@ -9,7 +9,7 @@ var umd = require('gulp-umd')
 gulp.task('default', ['build','min','map']);
 
 gulp.task('watch', function (cb) {
-    watch('src/*.js', ['build']);
+    watch('./src/**/*', ['build']);
 });
 
 gulp.task('build',function(){

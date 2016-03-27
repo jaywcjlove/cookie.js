@@ -2,6 +2,23 @@
 
 [![](https://img.shields.io/github/issues/jaywcjlove/cookie.js.svg)](https://github.com/jaywcjlove/cookie.js/issues) [![](https://img.shields.io/github/forks/jaywcjlove/cookie.js.svg)](https://github.com/jaywcjlove/cookie.js/network) [![](https://img.shields.io/github/stars/jaywcjlove/cookie.js.svg)](https://github.com/jaywcjlove/cookie.js/stargazers) [![](https://img.shields.io/github/release/jaywcjlove/cookie.js.svg)](https://github.com/jaywcjlove/cookie.js/releases)
 
+## cookie 的优缺点
+
+[规范：DOM Level 2: HTMLDocument.cookie](https://www.w3.org/TR/DOM-Level-2-HTML/html.html#ID-8747038)  
+[MDN Cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies)
+[MDN Cookies (Code snippets)](https://developer.mozilla.org/en-US/Add-ons/Code_snippets/Cookies)
+
+cookie虽然在持久保存客户端数据提供了方便，分担了服务器存储的负担，但还是有很多局限性的。 第一：每个特定的域名下最多生成20个cookie
+
+1.IE6或更低版本最多20个cookie
+2.IE7和之后的版本最后可以有50个cookie。
+3.Firefox最多50个cookie
+4.chrome和Safari没有做硬性限制
+
+cookie的最大大约为4096字节，为了兼容性，一般不能超过4095字节。
+
+IE 提供了一种存储可以持久化用户数据，叫做userdata，从IE5.0就开始支持。每个数据最多128K，每个域名下最多1M。这个持久化数据放在缓存中，如果缓存没有清理，那么会一直存在。
+
 
 ## 安装
 
