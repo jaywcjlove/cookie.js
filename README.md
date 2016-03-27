@@ -10,10 +10,10 @@
 
 cookie虽然在持久保存客户端数据提供了方便，分担了服务器存储的负担，但还是有很多局限性的。 第一：每个特定的域名下最多生成20个cookie
 
-1.IE6或更低版本最多20个cookie
-2.IE7和之后的版本最后可以有50个cookie。
-3.Firefox最多50个cookie
-4.chrome和Safari没有做硬性限制
+1.IE6或更低版本最多20个cookie  
+2.IE7和之后的版本最后可以有50个cookie。  
+3.Firefox最多50个cookie  
+4.chrome和Safari没有做硬性限制  
 
 cookie的最大大约为4096字节，为了兼容性，一般不能超过4095字节。
 
