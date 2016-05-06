@@ -8,7 +8,9 @@
     "url": "https://github.com/jaywcjlove/cookie.js.git"
   },
   "keywords": [
-    "cookiejs","cookie", "cookies"
+    "cookiejs",
+    "cookie",
+    "cookies"
   ],
   "author": "kenny wang",
   "license": "MIT",
@@ -16,21 +18,20 @@
     "url": "https://github.com/jaywcjlove/cookie.js/issues"
   },
   "scripts": {
-    "test": "mocha-phantomjs test/index.html",
-    "start": "gulp watch"
+    "test": "ssr",
+    "build:min": "umd cookie src/cookie.js | uglifyjs -mc | bannerjs -o > dist/cookie.min.js",
+    "build:dist": "umd cookie src/cookie.js | bannerjs -m | uglifyjs -b beautify=true --comments 'all' > dist/cookie.js ",
+    "build": "npm run build:min && npm run build:dist",
+    "watch": "onchange 'src/store.js' -v -- npm run build"
   },
   "homepage": "https://github.com/jaywcjlove/cookie.js",
-  "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sourcemap": "^1.0.1",
-    "gulp-uglify": "^1.5.1",
-    "gulp-umd": "^0.2.0",
-    "gulp-watch": "^4.3.5"
-  },
   "dependencies": {
-    "chai": "^3.4.1",
-    "mocha": "^2.3.4",
-    "mocha-phantomjs": "^4.0.1"
+    "bannerjs": "^1.0.1",
+    "onchange": "^2.4.0",
+    "ssr": "^1.0.10",
+    "tape": "^4.5.1",
+    "tape-dom": "0.0.10",
+    "uglify-js": "^2.6.2",
+    "umd": "^3.0.1"
   }
 }

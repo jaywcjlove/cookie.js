@@ -34,18 +34,21 @@ $ bower info icookie # Run bower info icookie to list the available versions.
 $ npm install cookiejs
 ```
 
-生成压缩文件和map文件
+生成压缩文件和开发模式
 
 ```bash
-$ gulp build    # 生成带UMD的js原文件
-$ gulp min      # 生成压缩文件
-$ gulp map      # 生成.map文件
+$ npm run build    # 生成带UMD的js原文件 以及 min.js
+$ npm run watch    # 监听文件改变自动压缩生成js
 ```
 
 ## 测试
 
-```
+```bash
+$ npm install browserify -g
+$ browserify test/cookie.js > test/cookie.test.js
 $ npm test
+
+# 浏览器打开 http://localhost:1987/test/test.html
 ```
 
 ## cookie APIs

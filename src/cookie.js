@@ -84,3 +84,4 @@ cookie=function (name, value, options){
 	return _cookie()
 }
 for (var a in Cookie.cookieAPI) cookie[a]=Cookie.cookieAPI[a];
+return cookie;
