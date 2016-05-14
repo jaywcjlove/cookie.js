@@ -35,7 +35,7 @@ if (typeof(window)==='object') {
         t.equal( cookie("test1") , 'tank1','获取单个cookie方法：cookie("test1")' )
 
         t.deepEqual(cookie.all() , {test1: "tank1"} , '获取所有cookie方法：cookie.all()')
-
+        cookie("test1",null)
         cookie.set({
            "test1": "tank1",
            "test2": "tank2"
