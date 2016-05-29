@@ -18,7 +18,7 @@
     "url": "https://github.com/jaywcjlove/cookie.js/issues"
   },
   "scripts": {
-    "test": "ssr",
+    "test": "browserify test/cookie.js > test/cookie.test.js && ssr",
     "build:min": "umd cookie src/cookie.js | uglifyjs -mc | bannerjs -o > dist/cookie.min.js",
     "build:dist": "umd cookie src/cookie.js | bannerjs -m | uglifyjs -b beautify=true --comments 'all' > dist/cookie.js ",
     "build": "npm run build:min && npm run build:dist",
