@@ -44,8 +44,6 @@ $ npm run watch    # 监听文件改变自动压缩生成js
 ## 测试
 
 ```bash
-$ npm install browserify -g
-$ browserify test/cookie.js > test/cookie.test.js
 $ npm test
 
 # 浏览器打开 http://localhost:1987/test/test.html
