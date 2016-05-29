@@ -26,7 +26,8 @@
     "watch": "onchange 'src/cookie.js' -v -- npm run build "
   },
   "homepage": "https://github.com/jaywcjlove/cookie.js",
-  "dependencies": {
+  "devDependencies": {
+    "browserify": "^13.0.1",
     "bannerjs": "^1.0.1",
     "onchange": "^2.4.0",
     "ssr": "^1.0.10",
