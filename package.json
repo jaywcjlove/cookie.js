@@ -1,6 +1,6 @@
 {
   "name": "cookiejs",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Local storage cookie package provides a simple API",
   "main": "dist/cookie.js",
   "repository": {
@@ -18,11 +18,12 @@
     "url": "https://github.com/jaywcjlove/cookie.js/issues"
   },
   "scripts": {
-    "test": "browserify test/cookie.js > test/cookie.test.js && ssr",
+    "test": "npm run build:test && ssr",
     "build:min": "umd cookie src/cookie.js | uglifyjs -mc | bannerjs -o > dist/cookie.min.js",
     "build:dist": "umd cookie src/cookie.js | bannerjs -m | uglifyjs -b beautify=true --comments 'all' > dist/cookie.js ",
-    "build": "npm run build:min && npm run build:dist",
-    "watch": "onchange 'src/store.js' -v -- npm run build"
+    "build:test": "browserify test/cookie.js > test/cookie.test.js",
+    "build": "npm run build:min && npm run build:dist && npm run build:test",
+    "watch": "onchange 'src/cookie.js' -v -- npm run build "
   },
   "homepage": "https://github.com/jaywcjlove/cookie.js",
   "dependencies": {
