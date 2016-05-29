@@ -2,7 +2,9 @@
 
 [![Build Status](https://travis-ci.org/jaywcjlove/cookie.js.svg?branch=master)](https://travis-ci.org/jaywcjlove/cookie.js) [![](https://img.shields.io/github/issues/jaywcjlove/cookie.js.svg)](https://github.com/jaywcjlove/cookie.js/issues) [![](https://img.shields.io/github/forks/jaywcjlove/cookie.js.svg)](https://github.com/jaywcjlove/cookie.js/network) [![](https://img.shields.io/github/stars/jaywcjlove/cookie.js.svg)](https://github.com/jaywcjlove/cookie.js/stargazers) [![](https://img.shields.io/github/release/jaywcjlove/cookie.js.svg)](https://github.com/jaywcjlove/cookie.js/releases)
 
-## cookie 的优缺点
+对操作cookie的封装，提供简单的AIP 兼容IE6
+
+## 优缺点
 
 [规范：DOM Level 2: HTMLDocument.cookie](https://www.w3.org/TR/DOM-Level-2-HTML/html.html#ID-8747038)  
 [MDN Cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies)
@@ -20,7 +22,7 @@ cookie的最大大约为4096字节，为了兼容性，一般不能超过4095字
 IE 提供了一种存储可以持久化用户数据，叫做userdata，从IE5.0就开始支持。每个数据最多128K，每个域名下最多1M。这个持久化数据放在缓存中，如果缓存没有清理，那么会一直存在。
 
 
-## 安装
+# 安装
 
 ```bash
 # 安装依赖
@@ -48,6 +50,22 @@ $ npm test
 $ npm run ssr
 
 # 浏览器打开 http://localhost:1987/test/test.html
+```
+
+# 使用
+
+```html
+<script type="text/javascript" src="dist/cookie.js"></script>
+<script type="text/javascript">
+cookie("test","tank",1800)
+</script>
+```
+
+or 
+
+```js 
+var cookie = require('cookiejs')
+cookie("test","tank",1800)
 ```
 
 ## cookie APIs
