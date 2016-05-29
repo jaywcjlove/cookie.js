@@ -1,7 +1,7 @@
 {
   "name": "cookiejs",
   "version": "1.0.9",
-  "description": "Local storage cookie package provides a simple API",
+  "description": "Change the cookie library a simple API provides",
   "main": "dist/cookie.js",
   "repository": {
     "type": "git",
