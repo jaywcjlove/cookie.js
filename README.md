@@ -45,6 +45,7 @@ $ npm run watch    # 监听文件改变自动压缩生成js
 
 ```bash
 $ npm test
+$ npm run ssr
 
 # 浏览器打开 http://localhost:1987/test/test.html
 ```
