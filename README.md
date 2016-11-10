@@ -84,11 +84,12 @@ cookie("test",null)         //删除cookie test
 // 此方法清空cookie()🔫弃用，容易清空cookie
 // 功能变更为获取所有cookie的简写方式
 cookie()                    //获取所有cookie
+cookie(null)                //清空所有cookie
 
 cookie.set("test","tank",1)  //====cookie("test","tank",1)
 cookie.get("test")           //====cookie("test")
 cookie.remove("test")        //====cookie("test",null)
-cookie.clear()               //====cookie()
+cookie.clear()               //====cookie(null)
 
 cookie.all()                 //获取所有 cookie
 ```
