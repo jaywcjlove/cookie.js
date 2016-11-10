@@ -16,6 +16,8 @@ if (typeof(window)==='object') {
 
 
     tape('  cookie 单元测试', function (t) {
+        // 清空
+        cookie.clear()
 
         cookie("test1","tank1",1800)
         cookie.set("test2","tank2")
@@ -24,6 +26,7 @@ if (typeof(window)==='object') {
         t.equal( cookie('test2') , 'tank2','测试存储方法：cookie.set("test2","tank2")' )
 
         cookie("test1",null)
+        t.equal(cookie('test2') ,'tank2', '测试删除方法：cookie.remove("test2")' )
         cookie.remove("test2")
 
         t.false( cookie('test1') , '测试删除方法：cookie("test1",null)' )
