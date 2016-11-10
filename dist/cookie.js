@@ -104,7 +104,8 @@
     };
     var cookie = function(name, value, options) {
         var argm = arguments;
-        if (argm.length === 0) return Cookie().clear();
+        if (argm.length === 0) return Cookie().all();
+        if (argm.length === 1 && name === null) return Cookie().clear();
         if (argm.length === 2 && !value) return Cookie().clear(name);
         if (typeof name == "string" && !value) return Cookie().get(name);
         if (isPlainObject(name) || argm.length > 1 && name && value) return Cookie().set(name, value, options);
