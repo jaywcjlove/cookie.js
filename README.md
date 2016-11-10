@@ -57,7 +57,7 @@ $ npm run ssr
 ```html
 <script type="text/javascript" src="dist/cookie.js"></script>
 <script type="text/javascript">
-cookie("test","tank",1800)
+cookie("test","tank",1)
 </script>
 ```
 
@@ -65,23 +65,32 @@ or
 
 ```js 
 var cookie = require('cookiejs')
-cookie("test","tank",1800)
+cookie("test","tank",1)
 ```
 
 ## cookie APIs
 
+> cookie(key,value,num)
+
+- key cookie的名字
+- value cookie的值
+- num 存储时常以天为单位，一小时可传值 0.1
+
 ```js
-cookie("test","tank",1800)  //设置 cookie 的值，生存时间半个小时
+cookie("test","tank",1)     //设置 cookie 的值，生存时间1天d
 cookie("test")              //获取 cookie 的值，显示tank
 cookie("test",null)         //删除cookie test
-cookie()                    //清空cookie
 
-cookie.set("test","tank",1800)  //====cookie("test","tank",1800)
-cookie.get("test")              //====cookie("test")
-cookie.remove("test")           //====cookie("test",null)
-cookie.clear()                  //====cookie()
+// 此方法清空cookie()🔫弃用，容易清空cookie
+// 功能变更为获取所有cookie的简写方式
+cookie()                    //获取所有cookie
 
-cookie.all()                    //获取所有 cookie
+cookie.set("test","tank",1)  //====cookie("test","tank",1)
+cookie.get("test")           //====cookie("test")
+cookie.remove("test")        //====cookie("test",null)
+cookie.clear()               //====cookie()
+
+cookie.all()                 //获取所有 cookie
 ```
 
 ### 批量设置cookie的值
@@ -129,8 +138,7 @@ store("wcj1") //功能同上
 ### clear
 清空cookie
 
-`cookie.clear() `
-效果相同`cookie()`
+`cookie.clear() ` 效果相同 `cookie()`
 
 ```js
 cookie()
