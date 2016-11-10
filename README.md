@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/jaywcjlove/cookie.js.svg?branch=master)](https://travis-ci.org/jaywcjlove/cookie.js) [![](https://img.shields.io/github/issues/jaywcjlove/cookie.js.svg)](https://github.com/jaywcjlove/cookie.js/issues) [![](https://img.shields.io/github/forks/jaywcjlove/cookie.js.svg)](https://github.com/jaywcjlove/cookie.js/network) [![](https://img.shields.io/github/stars/jaywcjlove/cookie.js.svg)](https://github.com/jaywcjlove/cookie.js/stargazers) [![](https://img.shields.io/github/release/jaywcjlove/cookie.js.svg)](https://github.com/jaywcjlove/cookie.js/releases)
 
-对操作cookie的封装，提供简单的AIP 兼容IE6
+对操作cookie的封装，提供简单的AIP 兼容IE6，压缩之后只有~2kb。
 
 ## 优缺点
 
@@ -10,7 +10,7 @@
 [MDN Cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies)
 [MDN Cookies (Code snippets)](https://developer.mozilla.org/en-US/Add-ons/Code_snippets/Cookies)
 
-cookie虽然在持久保存客户端数据提供了方便，分担了服务器存储的负担，但还是有很多局限性的。 第一：每个特定的域名下最多生成20个cookie
+cookie虽然在持久保存客户端数据提供了方便，分担了服务器存储的负担，但还是有很多局限性的。 
 
 1.IE6或更低版本最多20个cookie  
 2.IE7和之后的版本最后可以有50个cookie。  
