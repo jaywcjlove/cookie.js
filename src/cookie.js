@@ -63,7 +63,7 @@ Cookie.prototype = {
 		return names;  
 	},
 	clear: function(name){
-		return this.remove(getKeys(this.all()));
+		return name?this.remove(name):this.remove(getKeys(this.all()));
 	},
 	all:function () {
 		if (document.cookie === '') return {};

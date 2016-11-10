@@ -1,11 +1,11 @@
 /*!
- * cookiejs v1.0.8
- * Copyright (c) 2016 kenny wang
- * Licensed under the MIT license.
+ * cookiejs v1.0.10
+ * Change the cookie library a simple API provides
  * 
- * Local storage cookie package provides a simple API
+ * Copyright (c) 2016 kenny wang
  * https://github.com/jaywcjlove/cookie.js
  * 
+ * Licensed under the MIT license.
  */
 (function(f) {
     if (typeof exports === "object" && typeof module !== "undefined") {
@@ -90,7 +90,7 @@
             return names;
         },
         clear: function(name) {
-            return this.remove(getKeys(this.all()));
+            return name ? this.remove(name) : this.remove(getKeys(this.all()));
         },
         all: function() {
             if (document.cookie === "") return {};
