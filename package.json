@@ -1,6 +1,6 @@
 {
   "name": "cookiejs",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Change the cookie library a simple API provides",
   "main": "dist/cookie.js",
   "repository": {
