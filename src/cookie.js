@@ -28,7 +28,7 @@ Cookie.prototype = {
 			}    
 			//如果含有我们要的name
 			if (c.indexOf(nameEQ) == 0) {
-				return unescape(c.substring(nameEQ.length,c.length));//解码并截取我们要值    
+				return decodeURI(c.substring(nameEQ.length,c.length));//解码并截取我们要值    
 			}    
 		}
 		return false;
@@ -52,7 +52,7 @@ Cookie.prototype = {
 			if (expires !== '' && 'toGMTString' in expires) expires = ';expires=' + expires.toGMTString();
 
 
-			document.cookie = name+"="+escape(value)+expires+path+domain+secure;   //转码并赋值    
+			document.cookie = name+"="+encodeURI(value)+expires+path+domain+secure;   //转码并赋值    
 		}
 	},
 	remove: function(names){
@@ -70,7 +70,7 @@ Cookie.prototype = {
 		var cookies = document.cookie.split('; '),result = {};
 		for (var i = 0, l = cookies.length; i < l; i++) {
 			var item = cookies[i].split('=');
-			result[unescape(item[0])] = unescape(item[1]);
+			result[decodeURI(item[0])] = decodeURI(item[1]);
 		}
 		return result;
 	}
