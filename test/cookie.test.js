@@ -1,10 +1,10 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function (global){
 /*!
- * cookiejs v1.0.10
+ * cookiejs v1.0.13
  * Change the cookie library a simple API provides
  * 
- * Copyright (c) 2016 kenny wang
+ * Copyright (c) 2017 kenny wang
  * https://github.com/jaywcjlove/cookie.js
  * 
  * Licensed under the MIT license.
@@ -29,13 +29,13 @@
     }
 })(function() {
     var define, module, exports;
-    var getKeys = Object.names || function(obj) {
+    function getKeys(obj) {
         var names = [], name = "";
         for (name in obj) {
             if (obj.hasOwnProperty(name)) names.push(name);
         }
         return names;
-    };
+    }
     function isPlainObject(value) {
         return !!value && Object.prototype.toString.call(value) === "[object Object]";
     }
@@ -64,7 +64,7 @@
                 }
                 //如果含有我们要的name
                 if (c.indexOf(nameEQ) == 0) {
-                    return unescape(c.substring(nameEQ.length, c.length));
+                    return decodeURI(c.substring(nameEQ.length, c.length));
                 }
             }
             return false;
@@ -81,7 +81,7 @@
                 //过期时间
                 if (expiresType === "string" && expires !== "") expires = new Date(expires); else if (expiresType === "number") expires = new Date(+new Date() + 1e3 * 60 * 60 * 24 * expires);
                 if (expires !== "" && "toGMTString" in expires) expires = ";expires=" + expires.toGMTString();
-                document.cookie = name + "=" + escape(value) + expires + path + domain + secure;
+                document.cookie = name + "=" + encodeURI(value) + expires + path + domain + secure;
             }
         },
         remove: function(names) {
@@ -99,7 +99,7 @@
             var cookies = document.cookie.split("; "), result = {};
             for (var i = 0, l = cookies.length; i < l; i++) {
                 var item = cookies[i].split("=");
-                result[unescape(item[0])] = unescape(item[1]);
+                result[decodeURI(item[0])] = decodeURI(item[1]);
             }
             return result;
         }
