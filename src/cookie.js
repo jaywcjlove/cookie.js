@@ -1,10 +1,10 @@
-var getKeys = Object.names || function (obj) {
-		var names = [],name = '';
-		for (name in obj) {
-			if (obj.hasOwnProperty(name)) names.push(name);
-		}
-		return names;
+function getKeys(obj) {
+	var names = [],name = '';
+	for (name in obj) {
+		if (obj.hasOwnProperty(name)) names.push(name);
 	}
+	return names;
+}
 function isPlainObject(value) {
 	return !!value && Object.prototype.toString.call(value) === '[object Object]';
 }
