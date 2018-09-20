@@ -13,9 +13,9 @@ function toArray(value) {
 	return Array.prototype.slice.call(value);
 }
 function Cookie(){
-    if(!(this instanceof Cookie)) {
-        return new Cookie()
-    };
+	if(!(this instanceof Cookie)) {
+		return new Cookie()
+	};
 }
 Cookie.prototype = {
 	get: function(name){
@@ -76,16 +76,19 @@ Cookie.prototype = {
 	}
 };
 
-var cookie = function(name, value, options){
+let _Cookie = null;
+
+const cookie = function(name, value, options){
 	var argm = arguments;
-	if (argm.length === 0) return Cookie().all();
-	if (argm.length === 1 && name === null) return Cookie().clear();
-	if (argm.length === 2 && !value) return Cookie().clear(name);
-	if (typeof(name) == 'string'&&!value) return Cookie().get(name);
+	if (!_Cookie) _Cookie = Cookie();
+	if (argm.length === 0) return _Cookie.all();
+	if (argm.length === 1 && name === null) return _Cookie.clear();
+	if (argm.length === 2 && !value) return _Cookie.clear(name);
+	if (typeof(name) == 'string'&&!value) return _Cookie.get(name);
 	if (isPlainObject(name) || (argm.length>1&&name&&value))
-		return Cookie().set(name, value, options);
-	if (value === null) return Cookie().remove(name);
-	return Cookie().all();
+		return _Cookie.set(name, value, options);
+	if (value === null) return _Cookie.remove(name);
+	return _Cookie.all();
 }
-for (var a in Cookie.prototype) cookie[a] = Cookie.prototype[a];
+for (const a in Cookie.prototype) cookie[a] = Cookie.prototype[a];
 return cookie;
