@@ -12,29 +12,38 @@
     "cookie",
     "cookies"
   ],
-  "author": "kenny wang",
+  "author": "kenny wong",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/jaywcjlove/cookie.js/issues"
   },
   "scripts": {
-    "test": "npm run build:test",
-    "ssr": "ssr",
-    "build:min": "umd cookie src/cookie.js | uglifyjs -mc | bannerjs -o > dist/cookie.min.js",
-    "build:dist": "umd cookie src/cookie.js | bannerjs -m | uglifyjs -b beautify=true --comments 'all' > dist/cookie.js ",
+    "test": "npm run build && npm run build:test",
     "build:test": "browserify test/cookie.js > test/cookie.test.js",
-    "build": "npm run build:min && npm run build:dist && npm run build:test",
-    "watch": "onchange 'src/cookie.js' -v -- npm run build "
+    "build": "node script/build.js",
+    "watch": "node script/watch.js"
   },
   "homepage": "https://github.com/jaywcjlove/cookie.js",
   "devDependencies": {
-    "browserify": "^13.0.1",
-    "bannerjs": "^1.0.1",
-    "onchange": "^2.4.0",
-    "ssr": "^1.0.10",
-    "tape": "^4.5.1",
-    "tape-dom": "0.0.10",
-    "uglify-js": "^2.6.2",
-    "umd": "^3.0.1"
+    "@babel/cli": "^7.1.0",
+    "@babel/core": "^7.1.0",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/plugin-transform-async-to-generator": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "bannerjs": "^1.0.5",
+    "browserify": "^16.2.2",
+    "colors-cli": "^1.0.18",
+    "onchange": "^4.1.0",
+    "rollup": "^0.66.1",
+    "rollup-plugin-babel": "^4.0.3",
+    "rollup-plugin-commonjs": "^9.1.8",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "ssr": "^1.1.1",
+    "tape": "^4.9.1",
+    "tape-chai": "^1.1.0",
+    "tape-dom": "0.0.12",
+    "uglify-js": "^3.4.9",
+    "zlib": "^1.0.5"
   }
 }

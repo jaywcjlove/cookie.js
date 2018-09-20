@@ -18,7 +18,7 @@ function Cookie(){
 	};
 }
 Cookie.prototype = {
-	get: function(name){
+	get: (name) => {
 		var nameEQ = name + "=";
 		var ca = document.cookie.split(';');//把cookie分割成组    
 		for(var i=0;i < ca.length;i++) {    
@@ -33,7 +33,7 @@ Cookie.prototype = {
 		}
 		return false;
 	},
-	set: function(name, value, options){
+	set: (name, value, options) => {
 		if (isPlainObject(name)) {
 			for (var k in name) {
 				if (name.hasOwnProperty(k)) this.set(k, name[k], value);
@@ -55,17 +55,17 @@ Cookie.prototype = {
 			document.cookie = name+"="+encodeURI(value)+expires+path+domain+secure;   //转码并赋值    
 		}
 	},
-	remove: function(names){
+	remove: (names) => {
 		names = isArray(names) ? names : toArray(arguments);
 		for (var i = 0, l = names.length; i < l; i++) {
 			this.set(names[i], '', -1);
 		}
 		return names;  
 	},
-	clear: function(name){
+	clear: (name) => {
 		return name?this.remove(name):this.remove(getKeys(this.all()));
 	},
-	all:function () {
+	all: () => {
 		if (document.cookie === '') return {};
 		var cookies = document.cookie.split('; '),result = {};
 		for (var i = 0, l = cookies.length; i < l; i++) {
@@ -78,8 +78,8 @@ Cookie.prototype = {
 
 let _Cookie = null;
 
-const cookie = function(name, value, options){
-	var argm = arguments;
+const cookie = (name, value, options) => {
+	const argm = arguments;
 	if (!_Cookie) _Cookie = Cookie();
 	if (argm.length === 0) return _Cookie.all();
 	if (argm.length === 1 && name === null) return _Cookie.clear();
@@ -91,4 +91,5 @@ const cookie = function(name, value, options){
 	return _Cookie.all();
 }
 for (const a in Cookie.prototype) cookie[a] = Cookie.prototype[a];
-return cookie;
+
+export default cookie;
