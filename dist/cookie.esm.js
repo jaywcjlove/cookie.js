@@ -1,5 +1,5 @@
 /*!
- * cookiejs v1.0.14
+ * cookiejs v1.0.15
  * Change the cookie library a simple API provides
  * 
  * Copyright (c) 2018 kenny wong
