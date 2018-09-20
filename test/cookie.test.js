@@ -1,9 +1,9 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 /*!
- * cookiejs v1.0.13
+ * cookiejs v1.0.14
  * Change the cookie library a simple API provides
  * 
- * Copyright (c) 2018 kenny wang
+ * Copyright (c) 2018 kenny wong
  * https://github.com/jaywcjlove/cookie.js
  * 
  * Licensed under the MIT license.
@@ -28,9 +28,6 @@
 
     return _typeof(obj);
   }
-
-  var _this = undefined,
-      _arguments = arguments;
 
   function getKeys(obj) {
     var names = [],
@@ -85,7 +82,7 @@
     set: function set(name, value, options) {
       if (isPlainObject(name)) {
         for (var k in name) {
-          if (name.hasOwnProperty(k)) _this.set(k, name[k], value);
+          if (name.hasOwnProperty(k)) this.set(k, name[k], value);
         }
       } else {
         var opt = isPlainObject(options) ? options : {
@@ -104,16 +101,16 @@
       }
     },
     remove: function remove(names) {
-      names = isArray(names) ? names : toArray(_arguments);
+      names = isArray(names) ? names : toArray(arguments);
 
       for (var i = 0, l = names.length; i < l; i++) {
-        _this.set(names[i], '', -1);
+        this.set(names[i], '', -1);
       }
 
       return names;
     },
     clear: function clear(name) {
-      return name ? _this.remove(name) : _this.remove(getKeys(_this.all()));
+      return name ? this.remove(name) : this.remove(getKeys(this.all()));
     },
     all: function all() {
       if (document.cookie === '') return {};
@@ -131,12 +128,12 @@
   var _Cookie = null;
 
   var cookie = function cookie(name, value, options) {
-    var argm = _arguments;
+    var argm = arguments;
     if (!_Cookie) _Cookie = Cookie();
     if (argm.length === 0) return _Cookie.all();
     if (argm.length === 1 && name === null) return _Cookie.clear();
     if (argm.length === 2 && !value) return _Cookie.clear(name);
-    if (typeof name == 'string' && !value) return _Cookie.get(name);
+    if (typeof name == "string" && !value) return _Cookie.get(name);
     if (isPlainObject(name) || argm.length > 1 && name && value) return _Cookie.set(name, value, options);
     if (value === null) return _Cookie.remove(name);
     return _Cookie.all();
