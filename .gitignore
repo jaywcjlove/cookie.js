@@ -1,2 +1,14 @@
-npm-debug.log
-node_modules/
+node_modules
+npm-debug.log*
+
+.DS_Store
+.cache
+.vscode
+
+*.bak
+*.log
+*.tem
+*.temp
+#.swp
+*.*~
+~*.*
