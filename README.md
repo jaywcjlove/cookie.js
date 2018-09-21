@@ -86,7 +86,7 @@ cookie("test", null)         // 删除cookie test
 // 此方法清空cookie()🔫弃用，容易清空cookie
 // 功能变更为获取所有cookie的简写方式
 cookie()                     // 获取所有cookie
-cookie(null)                 // 清空所有cookie
+cookie(null)                 // 🔫弃用 清空所有cookie
 
 cookie.set("test", "tank", 1) // ====cookie("test", "tank", 1)
 cookie.get("test")            // ====cookie("test")
@@ -152,7 +152,7 @@ cookie.clear();
 删除cookie
 
 `cookie.remove(name)` 
-效果相同 `cookie(name, null)`  
+效果相同 ~~`cookie(name, null)`~~  
 
 ```js
 cookie.remove("test") //删除cookie test
@@ -163,12 +163,12 @@ cookie("test", null) //这样也是 删除cookie test
 ###  expires过期时间、 path路径、 domain域、以及 secure安全。
 
 ```js
-cookie("test","123",{
+cookie("test", "123", {
   "expires": 7,
   "path": '/',
   "domain":""
 });
-cookie({"test":"123"},{
+cookie({"test": "123"}, {
   "expires": 7,
   "path": '/',
   "domain":""
