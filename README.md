@@ -3,15 +3,16 @@ JavaScript Cookie
 
 [![Build Status](https://travis-ci.org/jaywcjlove/cookie.js.svg?branch=master)](https://travis-ci.org/jaywcjlove/cookie.js) [![](https://img.shields.io/github/issues/jaywcjlove/cookie.js.svg)](https://github.com/jaywcjlove/cookie.js/issues) [![](https://img.shields.io/github/forks/jaywcjlove/cookie.js.svg)](https://github.com/jaywcjlove/cookie.js/network) [![](https://img.shields.io/github/stars/jaywcjlove/cookie.js.svg)](https://github.com/jaywcjlove/cookie.js/stargazers) [![](https://img.shields.io/github/release/jaywcjlove/cookie.js.svg)](https://github.com/jaywcjlove/cookie.js/releases)
 
-:cookie:Interactive and easy cookies from your browser in javascript, it is easy to pick up and use, has a reasonable footprint (~3kb) (gzipped: 1.73kb), and has no dependencies. It should not interfere with any JavaScript libraries or frameworks.
+:cookie: A simple, lightweight JavaScript API for handling browser cookies
+, it is easy to pick up and use, has a reasonable footprint (~3kb) (gzipped: 1.73kb), and has no dependencies. It should not interfere with any JavaScript libraries or frameworks.
 
 **Features:**
 
-🚀 Has no dependencies
-🌱 Works in all browsers
-🔥 Heavily tested
-💥 Supports AMD/CommonJS
-💥 [cookie.min.js](dist/cookie.min.js) 2.01kb(gzipped: 0.95kb)
+🚀 Has no dependencies  
+🌱 Works in all browsers  
+🔥 Heavily tested  
+📦 Supports AMD/CommonJS  
+💥 [cookie.min.js](dist/cookie.min.js) 2.01kb(gzipped: 0.95kb)  
 
 ## Usage
 
