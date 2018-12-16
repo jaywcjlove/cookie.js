@@ -1,6 +1,6 @@
 /*!
- * cookiejs v1.0.15
- * Change the cookie library a simple API provides
+ * cookiejs v1.0.17
+ * A simple, lightweight JavaScript API for handling browser cookies.
  * 
  * Copyright (c) 2018 kenny wong
  * https://github.com/jaywcjlove/cookie.js
