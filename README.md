@@ -54,6 +54,7 @@ cookie()                     // Get all cookie
 cookie.set('test', 'tank', 1) // ====cookie('test', 'tank', 1)
 cookie.get('test')            // ====cookie('test')
 cookie.remove('test')         // ====cookie('test',null)
+cookie.remove('test3', 'test4') // Delete cookie `test3` and `test4`
 
 cookie.clear()                // Clean all cookie
 cookie.all()                  // Get all cookie
