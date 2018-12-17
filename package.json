@@ -32,7 +32,6 @@
     "@babel/preset-env": "^7.1.0",
     "bannerjs": "^1.0.5",
     "colors-cli": "^1.0.18",
-    "onchange": "^4.1.0",
     "jest": "23.6.0",
     "rollup": "^0.66.1",
     "rollup-plugin-babel": "^4.0.3",
