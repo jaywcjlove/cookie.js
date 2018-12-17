@@ -1,6 +1,6 @@
 {
   "name": "cookiejs",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "A simple, lightweight JavaScript API for handling browser cookies.",
   "main": "dist/cookie.js",
   "repository": {
