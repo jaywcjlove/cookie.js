@@ -5,8 +5,9 @@ function getKeys(obj) {
   }
   return names;
 }
-function isPlainObject(value) {
-  return !!value && Object.prototype.toString.call(value) === '[object Object]';
+
+function isPlainObject(obj) {
+  return {}.toString.call(obj) === "[object Object]" && !obj.length;
 }
 function isArray(value) { return value instanceof Array }
 function toArray(value) {
