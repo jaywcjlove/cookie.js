@@ -1,7 +1,7 @@
 function getKeys(obj) {
-  var names = [],name = '';
+  var names = [], name = '';
   for (name in obj) {
-    if (obj.hasOwnProperty(name)) names.push(name);
+    names.push(name);
   }
   return names;
 }
@@ -45,7 +45,7 @@ Cookie.prototype = {
   set: function(name, value, options) {
     if (isPlainObject(name)) {
       for (var k in name) {
-        if (name.hasOwnProperty(k)) this.set(k, name[k], value);
+        this.set(k, name[k], value, options);
       }
     } else if (typeof name === 'string') {
       var opt = isPlainObject(options) ? options : { expires: options },
@@ -73,7 +73,7 @@ Cookie.prototype = {
     return names;  
   },
   clear: function(name) {
-    return name?this.remove(name):this.remove(getKeys(this.all()));
+    return name ? this.remove(name) : this.remove(getKeys(this.all()));
   },
   all: function() {
     if (document.cookie === '') return {};
@@ -94,8 +94,8 @@ const cookie = function(name, value, options) {
   if (argm.length === 0) return _Cookie.all();
   if (argm.length === 1 && name === null) return _Cookie.clear();
   if (argm.length === 2 && !value) return _Cookie.clear(name);
-  if (typeof name == "string" && !value) return _Cookie.get(name);
-  if (isPlainObject(name) || (argm.length > 1 && name && value)) {
+  if (typeof name == 'string' && !value) return _Cookie.get(name);
+  if ((typeof name === 'string' && value) || isPlainObject(name)) {
     return _Cookie.set(name, value, options);
   }
 };
