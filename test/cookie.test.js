@@ -60,4 +60,15 @@ test('Set cookie expires', () => {
   expect(cookie('test7', 'value7', { secure: false })).toBeUndefined();
   expect(cookie('test8', 'value8', { expires: 0.1 , domain: 'subdomain.website.com' })).toBeUndefined();
   expect(cookie()).toEqual({ "test7": "value7" });
+  expect(cookie.clear()).toEqual(["test7"]);
+});
+
+
+
+test('Other test case', () => {
+  expect(cookie.set([])).toBeUndefined();
+  var map = new Map();
+  map.set('a', 1);
+  expect(cookie.set(map)).toBeUndefined();
+  expect(cookie()).toEqual({});
 });
