@@ -152,6 +152,6 @@ cookie.get('name'); // => 'value'
 cookie.remove('name');
 ```
 
-### License
+## License
 
 Licensed under the MIT License.
