@@ -47,11 +47,13 @@ Cookie.prototype = {
           secure = opt.secure ? ';secure' : '';
 
         //过期时间
-      if (expiresType === 'string' && expires !== '') expires = new Date(expires);
-      else if (expiresType === 'number') expires = new Date(+new Date + 1000 * 60 * 60 * 24 * expires);
-      if (expires !== '' && 'toGMTString' in expires) expires = ';expires=' + expires.toGMTString();
-
-
+      if (expiresType === 'string' && expires !== '') {
+        expires = new Date(expires);
+      } else if (expiresType === 'number') {
+        expires = new Date(+new Date + 1000 * 60 * 60 * 24 * expires);
+      } if (expires !== '' && 'toGMTString' in expires) {
+        expires = ';expires=' + expires.toGMTString();
+      }
       document.cookie = name+"="+encodeURI(value)+expires+path+domain+secure;   //转码并赋值    
     }
   },
@@ -85,10 +87,9 @@ const cookie = function(name, value, options) {
   if (argm.length === 1 && name === null) return _Cookie.clear();
   if (argm.length === 2 && !value) return _Cookie.clear(name);
   if (typeof name == "string" && !value) return _Cookie.get(name);
-  if (isPlainObject(name) || (argm.length > 1 && name && value))
+  if (isPlainObject(name) || (argm.length > 1 && name && value)) {
     return _Cookie.set(name, value, options);
-  if (value === null) return _Cookie.remove(name);
-  return _Cookie.all();
+  }
 };
 for (const a in Cookie.prototype) cookie[a] = Cookie.prototype[a];
 
