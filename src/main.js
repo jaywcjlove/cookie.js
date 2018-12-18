@@ -7,8 +7,16 @@ function getKeys(obj) {
 }
 
 function isPlainObject(obj) {
-  return {}.toString.call(obj) === "[object Object]" && !obj.length;
+  obj = JSON.stringify(obj);
+  if (typeof obj !== 'string') {
+    return false;
+  }
+  if (!/^\{[\s\S]*\}$/.test(obj)) {
+    return false;
+  }
+  return true;
 }
+
 function isArray(value) { return value instanceof Array }
 function toArray(value) {
   return Array.prototype.slice.call(value);
@@ -39,18 +47,17 @@ Cookie.prototype = {
       for (var k in name) {
         if (name.hasOwnProperty(k)) this.set(k, name[k], value);
       }
-    }else{
+    } else if (typeof name === 'string') {
       var opt = isPlainObject(options) ? options : { expires: options },
         expires = opt.expires !== undefined ? opt.expires : '',
-          expiresType = typeof(expires),
           path = opt.path !== undefined ? ';path=' + opt.path : ';path=/',
           domain = opt.domain ? ';domain=' + opt.domain : '',
           secure = opt.secure ? ';secure' : '';
 
         //过期时间
-      if (expiresType === 'string' && expires !== '') {
+      if (typeof expires === 'string' && expires !== '') {
         expires = new Date(expires);
-      } else if (expiresType === 'number') {
+      } else if (typeof expires === 'number') {
         expires = new Date(+new Date + 1000 * 60 * 60 * 24 * expires);
       } if (expires !== '' && 'toGMTString' in expires) {
         expires = ';expires=' + expires.toGMTString();
