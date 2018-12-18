@@ -1,5 +1,5 @@
 /*!
- * cookiejs v1.0.18
+ * cookiejs v1.0.19
  * A simple, lightweight JavaScript API for handling browser cookies.
  * 
  * Copyright (c) 2018 kenny wong
@@ -33,8 +33,8 @@ function getKeys(obj) {
   return names;
 }
 
-function isPlainObject(value) {
-  return !!value && Object.prototype.toString.call(value) === '[object Object]';
+function isPlainObject(obj) {
+  return {}.toString.call(obj) === "[object Object]" && !obj.length;
 }
 
 function isArray(value) {
