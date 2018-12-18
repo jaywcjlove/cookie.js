@@ -1,6 +1,7 @@
 const cookie = require('../dist/cookie');
 
 test('Set cookie', () => {
+  expect(cookie()).toEqual({});
   expect(cookie("test1", "value1", 1800)).toBeUndefined();
   expect(cookie("test2", "value2")).toBeUndefined();
   expect(cookie.set({ "test3": "value3", "test4": "value4" })).toBeUndefined();
@@ -28,6 +29,9 @@ test('Delete one cookie', () => {
   expect(cookie('test1', null)).toEqual(["test1"]);
   expect(cookie('test1')).toBe(false);
   expect(cookie.remove('test2')).toEqual(["test2"]);
+
+  expect(cookie.set({ "test10": "value10" })).toBeUndefined();
+  expect(cookie('test10', null)).toEqual(["test10"]);
 });
 
 test('Delete multiple cookies', () => {
@@ -41,4 +45,19 @@ test('Clean all cookie', () => {
   expect(cookie('test5')).toBe(false);
   expect(cookie('test6')).toBe(false);
   expect(cookie('test7')).toBe(false);
+
+  expect(cookie.set({ 'test3': 'value3', 'test4': 'value4' })).toBeUndefined();
+  expect(cookie(null)).toEqual(['test3', 'test4']);
+  expect(cookie('test1')).toBe(false);
+});
+
+test('Set cookie expires', () => {
+  expect(cookie('test5', 'value5', { 'expires': '2023-08-13', path: '/' })).toBeUndefined();
+  expect(cookie('test6', 'value6', { path: '/', secure: false })).toBeUndefined();
+  expect(cookie(null)).toEqual(['test5', 'test6']);
+  expect(cookie('test6', 'value6', { secure: true })).toBeUndefined();
+  expect(cookie.get('test6')).toEqual(false);
+  expect(cookie('test7', 'value7', { secure: false })).toBeUndefined();
+  expect(cookie('test8', 'value8', { expires: 0.1 , domain: 'subdomain.website.com' })).toBeUndefined();
+  expect(cookie()).toEqual({ "test7": "value7" });
 });
