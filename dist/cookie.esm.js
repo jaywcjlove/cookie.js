@@ -1,5 +1,5 @@
 /*!
- * cookiejs v1.0.20
+ * cookiejs v1.0.22
  * A simple, lightweight JavaScript API for handling browser cookies.
  * 
  * Copyright (c) 2018 kenny wong
@@ -13,7 +13,7 @@ function getKeys(obj) {
       name = '';
 
   for (name in obj) {
-    if (obj.hasOwnProperty(name)) names.push(name);
+    names.push(name);
   }
 
   return names;
@@ -71,7 +71,7 @@ Cookie.prototype = {
   set: function set(name, value, options) {
     if (isPlainObject(name)) {
       for (var k in name) {
-        if (name.hasOwnProperty(k)) this.set(k, name[k], value);
+        this.set(k, name[k], value, options);
       }
     } else if (typeof name === 'string') {
       var opt = isPlainObject(options) ? options : {
@@ -128,9 +128,9 @@ var cookie = function cookie(name, value, options) {
   if (argm.length === 0) return _Cookie.all();
   if (argm.length === 1 && name === null) return _Cookie.clear();
   if (argm.length === 2 && !value) return _Cookie.clear(name);
-  if (typeof name == "string" && !value) return _Cookie.get(name);
+  if (typeof name == 'string' && !value) return _Cookie.get(name);
 
-  if (isPlainObject(name) || argm.length > 1 && name && value) {
+  if (typeof name === 'string' && value || isPlainObject(name)) {
     return _Cookie.set(name, value, options);
   }
 };
