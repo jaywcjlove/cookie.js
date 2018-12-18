@@ -1,5 +1,5 @@
 /*!
- * cookiejs v1.0.19
+ * cookiejs v1.0.20
  * A simple, lightweight JavaScript API for handling browser cookies.
  * 
  * Copyright (c) 2018 kenny wong
@@ -14,20 +14,6 @@
   (global.cookie = factory());
 }(this, (function () { 'use strict';
 
-  function _typeof(obj) {
-    if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-      _typeof = function (obj) {
-        return typeof obj;
-      };
-    } else {
-      _typeof = function (obj) {
-        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-      };
-    }
-
-    return _typeof(obj);
-  }
-
   function getKeys(obj) {
     var names = [],
         name = '';
@@ -40,7 +26,17 @@
   }
 
   function isPlainObject(obj) {
-    return {}.toString.call(obj) === "[object Object]" && !obj.length;
+    obj = JSON.stringify(obj);
+
+    if (typeof obj !== 'string') {
+      return false;
+    }
+
+    if (!/^\{[\s\S]*\}$/.test(obj)) {
+      return false;
+    }
+
+    return true;
   }
 
   function isArray(value) {
@@ -83,20 +79,18 @@
         for (var k in name) {
           if (name.hasOwnProperty(k)) this.set(k, name[k], value);
         }
-      } else {
+      } else if (typeof name === 'string') {
         var opt = isPlainObject(options) ? options : {
           expires: options
         },
             expires = opt.expires !== undefined ? opt.expires : '',
-            expiresType = _typeof(expires),
             path = opt.path !== undefined ? ';path=' + opt.path : ';path=/',
             domain = opt.domain ? ';domain=' + opt.domain : '',
             secure = opt.secure ? ';secure' : ''; //过期时间
 
-
-        if (expiresType === 'string' && expires !== '') {
+        if (typeof expires === 'string' && expires !== '') {
           expires = new Date(expires);
-        } else if (expiresType === 'number') {
+        } else if (typeof expires === 'number') {
           expires = new Date(+new Date() + 1000 * 60 * 60 * 24 * expires);
         }
 
