@@ -2,6 +2,6 @@
 module.exports = {
   verbose: true,
   collectCoverageFrom: [
-    "**/dist/cookie.js"
+    "**/dist/cookie.common.js"
   ]
 };
