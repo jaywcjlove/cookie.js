@@ -1,8 +1,12 @@
 {
   "name": "cookiejs",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "description": "A simple, lightweight JavaScript API for handling browser cookies.",
   "main": "dist/cookie.js",
+  "module": "dist/cookie.esm.js",
+  "files": [
+    "dist/*.js"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/jaywcjlove/cookie.js.git"
