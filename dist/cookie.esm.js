@@ -1,5 +1,5 @@
 /*!
- * cookiejs v1.0.22
+ * cookiejs v1.0.23
  * A simple, lightweight JavaScript API for handling browser cookies.
  * 
  * Copyright (c) 2018 kenny wong
