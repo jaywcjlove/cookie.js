@@ -11,6 +11,7 @@
 🚀 它没有任何依赖  
 🌱 适用于所有浏览器  
 🔥 经过严格测试   
+🍁 支持TypeScript，包括 [d.ts](index.d.ts) 定义  
 📦 支持 AMD/CommonJS  
 💥 [cookie.min.js](dist/cookie.min.js) 2.01kb(gzip压缩: 0.95kb)  
 
@@ -169,7 +170,6 @@ cookie('name', 'value', { 'expires': 30 });
 ```js
 cookie.set('name', 'value', { path: '' });
 cookie.get('name'); // => 'value'
-cookie.remove('name', { path: '' });
 ```
 
 ### domain
