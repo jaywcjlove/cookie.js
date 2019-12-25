@@ -1,5 +1,5 @@
 /*!
- * cookiejs v1.0.25
+ * cookiejs v1.0.26
  * A simple, lightweight JavaScript API for handling browser cookies.
  * 
  * Copyright (c) 2019 kenny wong
@@ -11,7 +11,7 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global.cookie = factory());
+  (global = global || self, global.cookie = factory());
 }(this, (function () { 'use strict';
 
   function getKeys(obj) {
