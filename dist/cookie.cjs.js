@@ -1,3 +1,13 @@
+/*!
+ * cookiejs v1.0.26
+ * A simple, lightweight JavaScript API for handling browser cookies.
+ * 
+ * Copyright (c) 2019 kenny wong
+ * https://github.com/jaywcjlove/cookie.js
+ * 
+ * Licensed under the MIT license.
+ */
+
 'use strict';
 
 function getKeys(obj) {
