@@ -12,7 +12,7 @@ JavaScript Cookie
 🍁 Support TypeScript, including [d.ts](index.d.ts) definition  
 🔥 Heavily tested  
 📦 Supports AMD/CommonJS  
-💥 [cookie.min.js](dist/cookie.min.js) 2.01kb(gzipped: 0.95kb)  
+💥 [cookie.min.js](dist/cookie.min.js) 2.01kb(gzipped: 0.84kb)  
 
 ## Usage
 
