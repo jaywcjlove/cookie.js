@@ -1,17 +1,25 @@
 const path = require('path');
 const rollup = require('rollup');
 const babel = require('rollup-plugin-babel');
-const nodeResolve = require('rollup-plugin-node-resolve');
-const commonjs = require('rollup-plugin-commonjs');
+const nodeResolve = require('@rollup/plugin-node-resolve');
+const commonjs = require('@rollup/plugin-commonjs');
+const { terser } = require('rollup-plugin-terser');
 const banner = require('bannerjs');
 require('colors-cli/toxic');
 
 const watchOptions = {
   input: 'src/main.js',
   output: [
-    { file: 'dist/cookie.common.js', name: 'cookie', format: 'cjs' },
+    { file: 'dist/cookie.cjs.js', name: 'cookie', format: 'cjs' },
     { file: 'dist/cookie.js', name: 'cookie', format: 'umd', banner: banner.multibanner() },
     { file: 'dist/cookie.esm.js', name: 'cookie', format: 'es', banner: banner.multibanner() },
+    {
+      file: 'dist/cookie.min.js',
+      name: 'cookie',
+      banner: banner.onebanner(),
+      format: 'iife',
+      plugins: [terser()]
+    },
   ],
   plugins: [
     nodeResolve(), // so Rollup can find `ms`
@@ -41,5 +49,3 @@ watcher.on('event', (event) => {
   }
 });
 
-// stop watching
-// watcher.close();

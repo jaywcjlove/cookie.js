@@ -3,8 +3,7 @@ JavaScript Cookie
 
 [![Build Status](https://travis-ci.org/jaywcjlove/cookie.js.svg?branch=master)](https://travis-ci.org/jaywcjlove/cookie.js) [![Coverage Status](https://coveralls.io/repos/github/jaywcjlove/cookie.js/badge.svg?branch=master)](https://coveralls.io/github/jaywcjlove/cookie.js?branch=master) [![](https://img.shields.io/github/issues/jaywcjlove/cookie.js.svg)](https://github.com/jaywcjlove/cookie.js/issues) [![](https://img.shields.io/github/forks/jaywcjlove/cookie.js.svg)](https://github.com/jaywcjlove/cookie.js/network) [![](https://img.shields.io/github/stars/jaywcjlove/cookie.js.svg)](https://github.com/jaywcjlove/cookie.js/stargazers) [![](https://img.shields.io/github/release/jaywcjlove/cookie.js.svg)](https://github.com/jaywcjlove/cookie.js/releases) [![cookie.js](https://jaywcjlove.github.io/sb/lang/chinese.svg)](./README-zh.md)
 
-:cookie: A simple, lightweight JavaScript API for handling browser cookies
-, it is easy to pick up and use, has a reasonable footprint (~2kb) (gzipped: 0.95kb), and has no dependencies. It should not interfere with any JavaScript libraries or frameworks.
+:cookie: A simple, lightweight JavaScript API for handling browser cookies, it is easy to pick up and use, has a reasonable footprint (~2kb) (gzipped: 0.84kb), and has no dependencies. It should not interfere with any JavaScript libraries or frameworks.
 
 **Features:**
 
