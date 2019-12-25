@@ -1,4 +1,4 @@
-const cookie = require('../dist/cookie.common');
+const cookie = require('../dist/cookie.cjs');
 
 test('Set cookie', () => {
   expect(cookie()).toEqual({});
