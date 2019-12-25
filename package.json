@@ -25,6 +25,7 @@
     "url": "https://github.com/jaywcjlove/cookie.js/issues"
   },
   "scripts": {
+    "prepare": "npm run build",
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watch",
     "build": "node script/build.js",
