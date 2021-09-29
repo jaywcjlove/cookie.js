@@ -1,170 +1,486 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>cookie.js</title>
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-</head>
-<body>
-<div class="nav">
-<div class="logo">cookie.js</div>
-<ul><li class="active"><a href="index.html">首页</a></li></ul></div>
-
-
-<div class="forkgithub"><a target="_blank" href="https://github.com/jaywcjlove/cookie.js"></a></div>
-
-<div class="warpper">
-
-    <div class="page-toc">
-        <ul><li><a href="#安装">安装</a><ul><li><a href="#bower">bower</a></li><li><a href="#npm">npm</a></li></ul></li><li><a href="#API">API</a><ul><li><a href="#批量设置cookie的值">批量设置cookie的值</a></li><li><a href="#set">set</a></li><li><a href="#get">get</a></li><li><a href="#clear">clear</a></li><li><a href="#remove">remove</a></li><li><a href="#expires过期时间、 path路径、 domain域、以及 secure安全。">expires过期时间、 path路径、 domain域、以及 secure安全。</a></li></ul></li><li><a href="#测试例子">测试例子</a></li></ul>
-    </div>
-    
-    <div class="content markdown-body">
-        <p><a href="https://github.com/jaywcjlove/cookie.js/issues"><img src="https://img.shields.io/github/issues/jaywcjlove/cookie.js.svg" alt=""></a> <a href="https://github.com/jaywcjlove/cookie.js/network"><img src="https://img.shields.io/github/forks/jaywcjlove/cookie.js.svg" alt=""></a> <a href="https://github.com/jaywcjlove/cookie.js/stargazers"><img src="https://img.shields.io/github/stars/jaywcjlove/cookie.js.svg" alt=""></a> <a href="https://github.com/jaywcjlove/cookie.js/releases"><img src="https://img.shields.io/github/release/jaywcjlove/cookie.js.svg" alt=""></a></p>
-<h1 id="&#x5B89;&#x88C5;">&#x5B89;&#x88C5; <a href="#&#x5B89;&#x88C5;"> # </a></h1>
-<h2 id="bower">bower <a href="#bower"> # </a></h2>
-<pre><code class="lang-bash">$ bower install icookie
-$ bower info icookie <span class="hljs-comment"># Run bower info icookie to list the available versions.</span>
+  <head>
+    <meta charset="utf-8">
+    <title>cookiejs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta description="A simple, lightweight JavaScript API for handling browser cookies.">
+    <meta keywords="cookiejs,cookie,cookies">
+    <style>.task-list-item {
+list-style-type: none
+}
+.task-list-item label {
+font-weight: 400
+}
+.task-list-item.enabled label {
+cursor: pointer
+}
+.task-list-item+.task-list-item {
+margin-top: 3px
+}
+.task-list-item .handle {
+display: none
+}
+.task-list-item-checkbox {
+margin: 0 .2em .25em -1.6em;
+vertical-align: middle
+}
+.wmde-markdown h1,.wmde-markdown h2,.wmde-markdown h3,.wmde-markdown h4,.wmde-markdown h5,.wmde-markdown h6 {
+font-weight: 600;
+line-height: 1.25;
+margin-bottom: 16px;
+margin-top: 24px
+}
+.wmde-markdown h1 .anchor,.wmde-markdown h2 .anchor,.wmde-markdown h3 .anchor,.wmde-markdown h4 .anchor,.wmde-markdown h5 .anchor,.wmde-markdown h6 .anchor {
+float: left;
+padding-right: 4px;
+margin-left: -20px;
+line-height: 1
+}
+.wmde-markdown h1 .octicon-link,.wmde-markdown h2 .octicon-link,.wmde-markdown h3 .octicon-link,.wmde-markdown h4 .octicon-link,.wmde-markdown h5 .octicon-link,.wmde-markdown h6 .octicon-link {
+visibility: hidden;
+vertical-align: middle
+}
+.wmde-markdown h1:hover .octicon-link,.wmde-markdown h2:hover .octicon-link,.wmde-markdown h3:hover .octicon-link,.wmde-markdown h4:hover .octicon-link,.wmde-markdown h5:hover .octicon-link,.wmde-markdown h6:hover .octicon-link {
+visibility: visible
+}
+.github-corner:hover .octo-arm {
+-webkit-animation: octocat-wave .56s ease-in-out;
+animation: octocat-wave .56s ease-in-out
+}
+@-webkit-keyframes octocat-wave {
+0%, to {
+-webkit-transform: rotate(0);
+transform: rotate(0);
+}
+20%, 60% {
+-webkit-transform: rotate(-25deg);
+transform: rotate(-25deg);
+}
+40%, 80% {
+-webkit-transform: rotate(10deg);
+transform: rotate(10deg);
+}
+}
+@keyframes octocat-wave {
+0%, to {
+-webkit-transform: rotate(0);
+transform: rotate(0)
+}
+20%, 60% {
+-webkit-transform: rotate(-25deg);
+transform: rotate(-25deg);
+}
+40%, 80% {
+-webkit-transform: rotate(10deg);
+transform: rotate(10deg);
+}
+}
+.wmde-markdown {
+font-size: 16px;
+line-height: 1.5;
+font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+max-width: 1024px;
+margin: 28px auto 60px auto;
+}
+.wmde-markdown > :first-child {
+margin-top: 0 !important;
+}
+.wmde-markdown > :last-child {
+margin-bottom: 0 !important;
+}
+.wmde-markdown code[class*="language-"],
+.wmde-markdown pre[class*="language-"] {
+color: black;
+text-align: left;
+white-space: pre;
+word-spacing: normal;
+word-break: normal;
+word-wrap: normal;
+-webkit-hyphens: none;
+hyphens: none;
+}
+.wmde-markdown pre code {
+background: none;
+overflow-wrap: normal;
+white-space: inherit;
+-moz-tab-size: 2;
+tab-size: 2;
+padding: 16px;
+font-size: 95%;
+line-height: 1.5;
+display: block;
+text-shadow: 0 1px #fff;
+}
+.wmde-markdown pre {
+margin-bottom: 18px;
+font-size: 85%;
+line-height: 1.45;
+position: relative;
+overflow-x: auto;
+background-color: #f6f8fa;
+border-radius: 3px;
+}
+.wmde-markdown code,
+.wmde-markdown tt {
+background-color: rgba(27, 31, 35, 0.05);
+border-radius: 3px;
+font-size: 85%;
+margin: 0;
+padding: 0.2em 0.4em;
+}
+.wmde-markdown pre,
+.wmde-markdown code,
+.wmde-markdown tt {
+font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+}
+.wmde-markdown img {
+max-width: 100%;
+}
+.wmde-markdown input {
+vertical-align: middle;
+margin: 0 0.2em 0.25em -1.6em;
+}
+.wmde-markdown input + p {
+display: inline;
+}
+.wmde-markdown h1,
+.wmde-markdown h2 {
+border-bottom: 1px solid #eaecef;
+padding-bottom: 0.3em;
+}
+.wmde-markdown h1,
+.wmde-markdown h2,
+.wmde-markdown h3,
+.wmde-markdown h4,
+.wmde-markdown h5,
+.wmde-markdown h6 {
+font-weight: 600;
+line-height: 1.25;
+margin-bottom: 16px;
+margin-top: 24px;
+}
+.wmde-markdown h1 .anchor,
+.wmde-markdown h2 .anchor,
+.wmde-markdown h3 .anchor,
+.wmde-markdown h4 .anchor,
+.wmde-markdown h5 .anchor,
+.wmde-markdown h6 .anchor {
+float: left;
+padding-right: 4px;
+margin-left: -20px;
+line-height: 1;
+}
+.wmde-markdown h1 .octicon-link,
+.wmde-markdown h2 .octicon-link,
+.wmde-markdown h3 .octicon-link,
+.wmde-markdown h4 .octicon-link,
+.wmde-markdown h5 .octicon-link,
+.wmde-markdown h6 .octicon-link {
+visibility: hidden;
+vertical-align: middle;
+}
+.wmde-markdown h1:hover .octicon-link,
+.wmde-markdown h2:hover .octicon-link,
+.wmde-markdown h3:hover .octicon-link,
+.wmde-markdown h4:hover .octicon-link,
+.wmde-markdown h5:hover .octicon-link,
+.wmde-markdown h6:hover .octicon-link {
+visibility: visible;
+}
+.wmde-markdown h1 {
+font-size: 2em;
+}
+.wmde-markdown h2 {
+font-size: 1.5em;
+}
+.wmde-markdown h3 {
+font-size: 1.25em;
+}
+.wmde-markdown h4 {
+font-size: 1em;
+}
+.wmde-markdown h5 {
+font-size: 0.875em;
+}
+.wmde-markdown h6 {
+font-size: 0.85em;
+}
+.wmde-markdown ol,
+.wmde-markdown ul {
+padding-left: 2em;
+}
+.wmde-markdown ol > p,
+.wmde-markdown ul > p {
+margin-bottom: 0;
+}
+.wmde-markdown ul {
+margin-bottom: 16px;
+margin-top: 0;
+list-style: initial;
+}
+.wmde-markdown > blockquote,
+.wmde-markdown > blockquote blockquote {
+margin: 0;
+border-left: 0.25em solid #dfe2e5;
+color: #6a737d;
+padding: 0 1em;
+}
+.wmde-markdown > blockquote > :last-child,
+.wmde-markdown > blockquote blockquote > :last-child {
+margin-bottom: 0;
+}
+.wmde-markdown > blockquote > :first-child,
+.wmde-markdown > blockquote blockquote > :first-child {
+margin-top: 0;
+}
+.wmde-markdown hr {
+margin: 1.5em auto;
+border: 0;
+border-top: 2px dotted #eee;
+height: 1px;
+}
+.wmde-markdown > table,
+.wmde-markdown > blockquote table {
+display: block;
+overflow: auto;
+width: 100%;
+border-collapse: collapse;
+border-spacing: 0;
+font-size: 14px;
+}
+.wmde-markdown > table tr,
+.wmde-markdown > blockquote table tr {
+background-color: #fff;
+border-top: 1px solid #c6cbd1;
+}
+.wmde-markdown > table td,
+.wmde-markdown > blockquote table td,
+.wmde-markdown > table th,
+.wmde-markdown > blockquote table th {
+border: 1px solid #dfe2e5;
+padding: 6px 13px;
+}
+.wmde-markdown blockquote,
+.wmde-markdown details,
+.wmde-markdown dl,
+.wmde-markdown ol,
+.wmde-markdown p,
+.wmde-markdown pre,
+.wmde-markdown table,
+.wmde-markdown ul {
+margin-bottom: 16px;
+margin-top: 0;
+}
+.wmde-markdown a {
+color: #0366d6;
+text-decoration: none;
+}
+.wmde-markdown a:hover {
+text-decoration: underline;
+}
+.wmde-markdown .namespace {
+opacity: 0.7;
+}
+.wmde-markdown .token.important {
+font-weight: normal;
+}
+.wmde-markdown .token.bold {
+font-weight: bold;
+}
+.wmde-markdown .token.italic {
+font-style: italic;
+}
+.wmde-markdown .token.entity {
+cursor: help;
+}
+.wmde-markdown kbd {
+background-color: #fafbfc;
+border-bottom-color: #d1d5da;
+border: 1px solid #d1d5da;
+border-radius: 3px;
+box-shadow: inset 0 -1px 0 #d1d5da;
+color: #56595d;
+display: inline-block;
+font-size: 10px;
+font-family: ui-monospace, SFMono-Regular, SF Mono, Consolas, Liberation Mono, Menlo, monospace;
+line-height: 10px;
+padding: 2px 4px;
+vertical-align: middle;
+}
+.wmde-markdown .token.tag .attr-value {
+color: #032f62;
+}
+.wmde-markdown .token.property,
+.wmde-markdown .token.tag,
+.wmde-markdown .token.boolean,
+.wmde-markdown .token.number,
+.wmde-markdown .token.function-name,
+.wmde-markdown .token.constant,
+.wmde-markdown .token.symbol,
+.wmde-markdown .token.deleted {
+color: #0060c9;
+}
+.wmde-markdown .token.punctuation {
+color: #a0a0a0;
+}
+.wmde-markdown code[class*="language-"] {
+color: black;
+}
+.wmde-markdown code[class*="language-"] .token.selector,
+.wmde-markdown code[class*="language-"] .token.attr-name,
+.wmde-markdown code[class*="language-"] .token.string,
+.wmde-markdown code[class*="language-"] .token.char,
+.wmde-markdown code[class*="language-"] .token.function,
+.wmde-markdown code[class*="language-"] .token.builtin {
+color: #6f42c1;
+}
+.wmde-markdown code[class*="language-"] .token.inserted {
+color: #22863a;
+background-color: #f0fff4;
+}
+.wmde-markdown code[class*="language-"] .token.deleted {
+color: #b31d28;
+background-color: #ffeef0;
+}
+.wmde-markdown code[class*="language-"] .token.class-name {
+color: #6f42c1;
+}
+.wmde-markdown code[class*="language-"] .code-block {
+color: #032f62;
+}
+.wmde-markdown code[class*="language-"] .token.comment,
+.wmde-markdown code[class*="language-"] .token.block-comment,
+.wmde-markdown code[class*="language-"] .token.prolog,
+.wmde-markdown code[class*="language-"] .token.doctype,
+.wmde-markdown code[class*="language-"] .token.cdata {
+color: #7D8B99;
+}
+.wmde-markdown code[class*="language-"] .token.punctuation {
+color: #a0a0a0;
+}
+.wmde-markdown code[class*="language-"] .token.operator,
+.wmde-markdown code[class*="language-"] .token.entity,
+.wmde-markdown code[class*="language-"] .token.url,
+.wmde-markdown code[class*="language-"] .token.variable {
+color: #d73a49;
+background: rgba(255, 255, 255, 0.5);
+}
+.wmde-markdown code[class*="language-"] .token.atrule,
+.wmde-markdown code[class*="language-"] .token.attr-value {
+color: #004698;
+}
+.wmde-markdown code[class*="language-"] .token.keyword {
+color: #d63200;
+}
+.wmde-markdown code[class*="language-"] .token.regex,
+.wmde-markdown code[class*="language-"] .token.important {
+color: #e90;
+}
+.wmde-markdown code[class*="language-"] .token.string {
+color: #0a53c1;
+}</style>
+    <style></style>
+  </head>
+  <body><div class="wmde-markdown"><a aria-label="View source on GitHub" target="__blank" class="github-corner" href="https://github.com/jaywcjlove/cookie.js.git"><svg width="54" height="54" viewBox="0 0 250 250" aria-hidden="true" style="fill: rgb(32, 34, 37); color: rgb(255, 255, 255); position: fixed; z-index: 99999; border: 0px; top: 0px; right: 0px;"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path style="transform-origin: 130px 106px;" class="octo-arm" fill="currentColor" d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"></path><path class="octo-body" fill="currentColor" d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"></path></svg></a>
+    <h2 id="javascript-cookie"><a class="anchor" aria-hidden="true" tabindex="-1" href="#javascript-cookie"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>JavaScript Cookie</h2>
+    <p><a href="https://travis-ci.org/jaywcjlove/cookie.js"><img src="https://travis-ci.org/jaywcjlove/cookie.js.svg?branch=master" alt="Build Status"></a> <a href="https://coveralls.io/github/jaywcjlove/cookie.js?branch=master"><img src="https://coveralls.io/repos/github/jaywcjlove/cookie.js/badge.svg?branch=master" alt="Coverage Status"></a> <a href="https://github.com/jaywcjlove/cookie.js/issues"><img src="https://img.shields.io/github/issues/jaywcjlove/cookie.js.svg" alt=""></a> <a href="https://github.com/jaywcjlove/cookie.js/network"><img src="https://img.shields.io/github/forks/jaywcjlove/cookie.js.svg" alt=""></a> <a href="https://github.com/jaywcjlove/cookie.js/stargazers"><img src="https://img.shields.io/github/stars/jaywcjlove/cookie.js.svg" alt=""></a> <a href="https://github.com/jaywcjlove/cookie.js/releases"><img src="https://img.shields.io/github/release/jaywcjlove/cookie.js.svg" alt=""></a> <a href="./README-zh.md"><img src="https://jaywcjlove.github.io/sb/lang/chinese.svg" alt="cookie.js"></a></p>
+    <p>:cookie: A simple, lightweight JavaScript API for handling browser cookies, it is easy to pick up and use, has a reasonable footprint (~2kb) (gzipped: 0.84kb), and has no dependencies. It should not interfere with any JavaScript libraries or frameworks.</p>
+    <p><strong>Features:</strong></p>
+    <p>🚀 Has no dependencies<br>🌱 Works in all browsers<br>🍁 Support TypeScript, including <a href="index.d.ts">d.ts</a> definition<br>🔥 Heavily tested<br>📦 Supports AMD/CommonJS<br>💥 <a href="dist/cookie.min.js">cookie.min.js</a> 2.01kb(gzipped: 0.84kb)</p>
+    <h2 id="usage"><a class="anchor" aria-hidden="true" tabindex="-1" href="#usage"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Usage</h2>
+    <p>Installed via npm. You will need Node.js installed on your system.</p>
+    <pre class="language-bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">install</span> cookiejs --save
 </code></pre>
-<h2 id="npm">npm <a href="#npm"> # </a></h2>
-<pre><code>$ npm install cookiejs
-</code></pre><h1 id="API">API <a href="#API"> # </a></h1>
-<pre><code class="lang-js">cookie(<span class="hljs-string">&quot;test&quot;</span>,<span class="hljs-string">&quot;tank&quot;</span>,<span class="hljs-number">1800</span>)  <span class="hljs-comment">//&#x8BBE;&#x7F6E; cookie &#x7684;&#x503C;&#xFF0C;&#x751F;&#x5B58;&#x65F6;&#x95F4;&#x534A;&#x4E2A;&#x5C0F;&#x65F6;</span>
-cookie(<span class="hljs-string">&quot;test&quot;</span>)              <span class="hljs-comment">//&#x83B7;&#x53D6; cookie &#x7684;&#x503C;&#xFF0C;&#x663E;&#x793A;tank</span>
-cookie(<span class="hljs-string">&quot;test&quot;</span>,<span class="hljs-literal">null</span>)         <span class="hljs-comment">//&#x5220;&#x9664;cookie test</span>
-cookie()                    <span class="hljs-comment">//&#x6E05;&#x7A7A;cookie</span>
+    <pre class="language-js"><code class="language-js"><span class="token keyword module">import</span> <span class="token imports">cookie</span> <span class="token keyword module">from</span> <span class="token string">'cookiejs'</span><span class="token punctuation">;</span>
 
-cookie.set(<span class="hljs-string">&quot;test&quot;</span>,<span class="hljs-string">&quot;tank&quot;</span>,<span class="hljs-number">1800</span>)  <span class="hljs-comment">//====cookie(&quot;test&quot;,&quot;tank&quot;,1800)</span>
-cookie.get(<span class="hljs-string">&quot;test&quot;</span>)              <span class="hljs-comment">//====cookie(&quot;test&quot;)</span>
-cookie.remove(<span class="hljs-string">&quot;test&quot;</span>)           <span class="hljs-comment">//====cookie(&quot;test&quot;,null)</span>
-cookie.clear()                  <span class="hljs-comment">//====cookie()</span>
-
-cookie.all()                    <span class="hljs-comment">//&#x83B7;&#x53D6;&#x6240;&#x6709; cookie</span>
+<span class="token function">cookie</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">,</span> <span class="token string">"tank"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
 </code></pre>
-<h2 id="&#x6279;&#x91CF;&#x8BBE;&#x7F6E;cookie&#x7684;&#x503C;">&#x6279;&#x91CF;&#x8BBE;&#x7F6E;cookie&#x7684;&#x503C; <a href="#&#x6279;&#x91CF;&#x8BBE;&#x7F6E;cookie&#x7684;&#x503C;"> # </a></h2>
-<pre><code class="lang-js">cookie.set({
-   name1: <span class="hljs-string">&apos;value1&apos;</span>,
-   name2: <span class="hljs-string">&apos;value2&apos;</span>
-});
+    <p>Or manually download and link <code>cookiejs</code> in your HTML, It can also be downloaded via <a href="https://unpkg.com/cookiejs/dist/">UNPKG</a> or <a href="https://www.jsdelivr.com/package/npm/cookiejs">jsDelivr CDN</a>:</p>
+    <pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://unpkg.com/cookiejs/dist/cookie.min.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>script</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+  <span class="token function">cookie</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">,</span> <span class="token string">"tank"</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>script</span><span class="token punctuation">></span></span>
 </code></pre>
-<h2 id="set">set <a href="#set"> # </a></h2>
-<p>&#x8BBE;&#x7F6E; cookie &#x7684;&#x503C;&#xFF0C;&#x8BBE;&#x7F6E;&#x65F6;&#x95F4;</p>
-<p><code>cookie.set(name,value,options)</code>
-&#x6548;&#x679C;&#x76F8;&#x540C;<code>cookie(name,value,options)</code></p>
-<pre><code class="lang-js">cookie(<span class="hljs-string">&quot;test&quot;</span>,<span class="hljs-string">&quot;tank&quot;</span>,<span class="hljs-number">30</span>)    <span class="hljs-comment">//&#x8BBE;&#x7F6E;cookie&#xFF0C;&#x5E76;&#x8BBE;&#x7F6E;&#x8FC7;&#x671F;&#x65F6;&#x95F4;30&#x5929;</span>
+    <h2 id="basic-usage"><a class="anchor" aria-hidden="true" tabindex="-1" href="#basic-usage"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Basic Usage</h2>
+    <blockquote>
+      <p>cookie(key, value, num)</p>
+    </blockquote>
+    <blockquote>
+      <p><code>key</code> cookie name<br><code>value</code> cookie value<br><code>num</code> expires time</p>
+    </blockquote>
+    <pre class="language-js"><code class="language-js"><span class="token function">cookie</span><span class="token punctuation">(</span><span class="token string">'test'</span><span class="token punctuation">,</span> <span class="token string">'tank'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>    <span class="token comment">// Create a cookie that expires 1 days from now</span>
+<span class="token function">cookie</span><span class="token punctuation">(</span><span class="token string">'test'</span><span class="token punctuation">)</span>               <span class="token comment">// Create a cookie, valid across the entire site</span>
+<span class="token function">cookie</span><span class="token punctuation">(</span><span class="token string">'test'</span><span class="token punctuation">,</span> <span class="token keyword null nil">null</span><span class="token punctuation">)</span>         <span class="token comment">// Delete cookie `test`</span>
+<span class="token function">cookie</span><span class="token punctuation">(</span><span class="token punctuation">)</span>                     <span class="token comment">// Get all cookie</span>
 
-cookie(<span class="hljs-string">&quot;test&quot;</span>,<span class="hljs-string">&quot;123&quot;</span>,{       <span class="hljs-comment">//&#x8BBE;&#x7F6E;cookie&#xFF0C;&#x5E76;&#x8BBE;&#x7F6E;&#x8FC7;&#x671F;&#x65F6;&#x95F4;7&#x5929;&#xFF0C;&#x8DEF;&#x5F84;&#x3001;&#x57DF;</span>
-    <span class="hljs-string">&quot;expires&quot;</span>: <span class="hljs-number">7</span>,
-    <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&apos;/&apos;</span>,
-    <span class="hljs-string">&quot;domain&quot;</span>:<span class="hljs-string">&quot;&quot;</span>
-});
+cookie<span class="token punctuation">.</span><span class="token method function property-access">set</span><span class="token punctuation">(</span><span class="token string">'test'</span><span class="token punctuation">,</span> <span class="token string">'tank'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">// ====cookie('test', 'tank', 1)</span>
+cookie<span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span><span class="token string">'test'</span><span class="token punctuation">)</span>            <span class="token comment">// ====cookie('test')</span>
+cookie<span class="token punctuation">.</span><span class="token method function property-access">remove</span><span class="token punctuation">(</span><span class="token string">'test'</span><span class="token punctuation">)</span>         <span class="token comment">// ====cookie('test',null)</span>
+cookie<span class="token punctuation">.</span><span class="token method function property-access">remove</span><span class="token punctuation">(</span><span class="token string">'test3'</span><span class="token punctuation">,</span> <span class="token string">'test4'</span><span class="token punctuation">)</span> <span class="token comment">// Delete cookie `test3` and `test4`</span>
 
-cookie({<span class="hljs-string">&quot;test&quot;</span>:<span class="hljs-string">&quot;123&quot;</span>,<span class="hljs-string">&quot;test2&quot;</span>:<span class="hljs-string">&quot;456&quot;</span>},{  <span class="hljs-comment">//&#x6279;&#x91CF;&#x8BBE;&#x7F6E;</span>
-    <span class="hljs-string">&quot;expires&quot;</span>: <span class="hljs-number">7</span>,
-    <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&apos;/&apos;</span>,
-    <span class="hljs-string">&quot;domain&quot;</span>:<span class="hljs-string">&quot;&quot;</span>
-});
+cookie<span class="token punctuation">.</span><span class="token method function property-access">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span>                <span class="token comment">// Clean all cookie</span>
+cookie<span class="token punctuation">.</span><span class="token method function property-access">all</span><span class="token punctuation">(</span><span class="token punctuation">)</span>                  <span class="token comment">// Get all cookie</span>
 </code></pre>
-<h2 id="get">get <a href="#get"> # </a></h2>
-<p>&#x83B7;&#x53D6; cookie &#x7684;&#x503C;</p>
-<p><code>cookie.get(name)</code>
-&#x6548;&#x679C;&#x76F8;&#x540C;<code>cookie(name)</code></p>
-<pre><code class="lang-js">store.get(<span class="hljs-string">&quot;wcj1&quot;</span>) <span class="hljs-comment">//&#x83B7;&#x53D6;wcj1&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x6570;&#x636E;</span>
-store(<span class="hljs-string">&quot;wcj1&quot;</span>) <span class="hljs-comment">//&#x529F;&#x80FD;&#x540C;&#x4E0A;</span>
+    <h2 id="set-cookie"><a class="anchor" aria-hidden="true" tabindex="-1" href="#set-cookie"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Set Cookie</h2>
+    <p><code>cookie.set(name, value, options)</code><br>The same effect <code>cookie(name, value, options)</code></p>
+    <p>Set the value of the cookie in batches</p>
+    <pre class="language-js"><code class="language-js">cookie<span class="token punctuation">.</span><span class="token method function property-access">set</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  name1<span class="token operator">:</span> <span class="token string">'value1'</span><span class="token punctuation">,</span>
+  name2<span class="token operator">:</span> <span class="token string">'value2'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<h2 id="clear">clear <a href="#clear"> # </a></h2>
-<p>&#x6E05;&#x7A7A;cookie</p>
-<p><code>cookie.clear()</code>
-&#x6548;&#x679C;&#x76F8;&#x540C;<code>cookie()</code></p>
-<pre><code class="lang-js">cookie()
-cookie.clear()
+    <p>Create cookie that expires 30 days from now</p>
+    <pre class="language-js"><code class="language-js"><span class="token function">cookie</span><span class="token punctuation">(</span><span class="token string">'test'</span><span class="token punctuation">,</span> <span class="token string">'tank'</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// Create a cookie that expires 30 days from now</span>
+
+<span class="token function">cookie</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token string">'test'</span><span class="token operator">:</span><span class="token string">'123'</span><span class="token punctuation">,</span> <span class="token string">'test2'</span><span class="token operator">:</span><span class="token string">'456'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token comment">// 批量设置</span>
+  <span class="token string">'expires'</span><span class="token operator">:</span> <span class="token number">30</span><span class="token punctuation">,</span>
+  <span class="token string">'path'</span><span class="token operator">:</span> <span class="token string">'/'</span><span class="token punctuation">,</span>
+  <span class="token string">'domain'</span><span class="token operator">:</span><span class="token string">''</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<h2 id="remove">remove <a href="#remove"> # </a></h2>
-<p>&#x5220;&#x9664;cookie</p>
-<p><code>cookie.remove(name)</code> 
-&#x6548;&#x679C;&#x76F8;&#x540C;<code>cookie(name,null)</code></p>
-<pre><code class="lang-js">cookie.remove(<span class="hljs-string">&quot;test&quot;</span>) <span class="hljs-comment">//&#x5220;&#x9664;cookie test</span>
-cookie(<span class="hljs-string">&quot;test&quot;</span>,<span class="hljs-literal">null</span>) <span class="hljs-comment">//&#x8FD9;&#x6837;&#x4E5F;&#x662F; &#x5220;&#x9664;cookie test</span>
+    <p>Create cookie that expires 30 days from now，and set cookie attributes</p>
+    <pre class="language-js"><code class="language-js"><span class="token function">cookie</span><span class="token punctuation">(</span><span class="token string">'test'</span><span class="token punctuation">,</span> <span class="token string">'123'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token string">'expires'</span><span class="token operator">:</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token string">'path'</span><span class="token operator">:</span> <span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token string">'domain'</span><span class="token operator">:</span><span class="token string">''</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<h2 id="expires&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x3001; path&#x8DEF;&#x5F84;&#x3001; domain&#x57DF;&#x3001;&#x4EE5;&#x53CA; secure&#x5B89;&#x5168;&#x3002;">expires&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x3001; path&#x8DEF;&#x5F84;&#x3001; domain&#x57DF;&#x3001;&#x4EE5;&#x53CA; secure&#x5B89;&#x5168;&#x3002; <a href="#expires&#x8FC7;&#x671F;&#x65F6;&#x95F4;&#x3001; path&#x8DEF;&#x5F84;&#x3001; domain&#x57DF;&#x3001;&#x4EE5;&#x53CA; secure&#x5B89;&#x5168;&#x3002;"> # </a></h2>
-<pre><code class="lang-js">cookie(<span class="hljs-string">&quot;test&quot;</span>,<span class="hljs-string">&quot;123&quot;</span>,{
-    <span class="hljs-string">&quot;expires&quot;</span>: <span class="hljs-number">7</span>,
-    <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&apos;/&apos;</span>,
-    <span class="hljs-string">&quot;domain&quot;</span>:<span class="hljs-string">&quot;&quot;</span>
-});
-cookie({<span class="hljs-string">&quot;test&quot;</span>:<span class="hljs-string">&quot;123&quot;</span>},{
-    <span class="hljs-string">&quot;expires&quot;</span>: <span class="hljs-number">7</span>,
-    <span class="hljs-string">&quot;path&quot;</span>: <span class="hljs-string">&apos;/&apos;</span>,
-    <span class="hljs-string">&quot;domain&quot;</span>:<span class="hljs-string">&quot;&quot;</span>
-});
+    <h2 id="cookie-attributes"><a class="anchor" aria-hidden="true" tabindex="-1" href="#cookie-attributes"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Cookie Attributes</h2>
+    <p>individually for each call to <code>cookie.set(...)</code> by passing a plain object in the last argument. Per-call attributes override the default attributes.</p>
+    <p><strong>Examples:</strong></p>
+    <pre class="language-js"><code class="language-js"><span class="token function">cookie</span><span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">,</span> <span class="token string">'value'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token string">'expires'</span><span class="token operator">:</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token string">'path'</span><span class="token operator">:</span> <span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token string">'domain'</span><span class="token operator">:</span><span class="token string">''</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+cookie<span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">)</span>
+cookie<span class="token punctuation">.</span><span class="token method function property-access">remove</span><span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">)</span>
 </code></pre>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">key</th>
-<th style="text-align:left">value</th>
-<th style="text-align:left">default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>expires</code></td>
-<td style="text-align:left">&#x8FC7;&#x671F;&#x65F6;&#x95F4;(&#x5929;)&#x3002;&#x6307;&#x5B9A;cookie&#x7684;&#x751F;&#x547D;&#x671F;&#x3002;&#x5177;&#x4F53;&#x662F;&#x503C;&#x662F;&#x8FC7;&#x671F;&#x65E5;&#x671F;&#x3002;&#x5982;&#x679C;&#x60F3;&#x8BA9;cookie&#x7684;&#x5B58;&#x5728;&#x671F;&#x9650;&#x8D85;&#x8FC7;&#x5F53;&#x524D;&#x6D4F;&#x89C8;&#x5668;&#x4F1A;&#x8BDD;&#x65F6;&#x95F4;&#xFF0C;&#x5C31;&#x5FC5;&#x987B;&#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x3002;&#x5F53;&#x8FC7;&#x4E86;&#x5230;&#x671F;&#x65E5;&#x671F;&#x65F6;&#xFF0C;&#x6D4F;&#x89C8;&#x5668;&#x5C31;&#x53EF;&#x4EE5;&#x5220;&#x9664;cookie&#x6587;&#x4EF6;&#xFF0C;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x5F71;&#x54CD;&#x3002;</td>
-<td style="text-align:left">&#x6D4F;&#x89C8;&#x5668;&#x5173;&#x95ED;&#x8FC7;&#x671F;</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>domain</code></td>
-<td style="text-align:left">&#x57DF;&#x3002;&#x6307;&#x5B9A;&#x5173;&#x8054;&#x7684;WEB&#x670D;&#x52A1;&#x5668;&#x6216;&#x57DF;&#x3002;&#x503C;&#x662F;&#x57DF;&#x540D;&#xFF0C;&#x6BD4;&#x5982;pc175.com&#x3002;&#x8FD9;&#x662F;&#x5BF9;path&#x8DEF;&#x5F84;&#x5C5E;&#x6027;&#x7684;&#x4E00;&#x4E2A;&#x5EF6;&#x4F38;&#x3002;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x60F3;&#x8BA9; catalog.pc175.com &#x80FD;&#x591F;&#x8BBF;&#x95EE;shoppingcart.pc175.com&#x8BBE;&#x7F6E;&#x7684;cookies&#xFF0C;&#x8BE5;&#x600E;&#x4E48;&#x529E;? &#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x628A;domain&#x5C5E;&#x6027;&#x8BBE;&#x7F6E;&#x6210;&#x201C;pc175.com&#x201D;&#xFF0C;&#x5E76;&#x628A;path&#x5C5E;&#x6027;&#x8BBE;&#x7F6E;&#x6210;&#x201C;/&#x201D;&#x3002;tag&#xFF1A;&#x4E0D;&#x80FD;&#x628A;cookies&#x57DF;&#x5C5E;&#x6027;&#x8BBE;&#x7F6E;&#x6210;&#x4E0E;&#x8BBE;&#x7F6E;&#x5B83;&#x7684;&#x670D;&#x52A1;&#x5668;&#x7684;&#x6240;&#x5728;&#x57DF;&#x4E0D;&#x540C;&#x7684;&#x503C;&#x3002;</td>
-<td style="text-align:left">&#x9ED8;&#x8BA4;&#x672C;&#x57DF;</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>path</code></td>
-<td style="text-align:left">&#x8DEF;&#x5F84;&#x3002;&#x6307;&#x5B9A;&#x4E0E;cookie&#x5173;&#x8054;&#x7684;WEB&#x9875;&#x3002;&#x503C;&#x53EF;&#x4EE5;&#x662F;&#x4E00;&#x4E2A;&#x76EE;&#x5F55;&#xFF0C;&#x6216;&#x8005;&#x662F;&#x4E00;&#x4E2A;&#x8DEF;&#x5F84;&#x3002;&#x5982;&#x679C;<a href="http://www.pc175.com/devhead/index.html">http://www.pc175.com/devhead/index.html</a> &#x5EFA;&#x7ACB;&#x4E86;&#x4E00;&#x4E2A;cookie&#xFF0C;&#x90A3;&#x4E48;&#x5728;<a href="http://www.pc175.com/devhead/&#x76EE;&#x5F55;&#x91CC;&#x7684;&#x6240;&#x6709;&#x9875;&#x9762;&#xFF0C;&#x4EE5;&#x53CA;&#x8BE5;&#x76EE;&#x5F55;&#x4E0B;&#x9762;&#x4EFB;&#x4F55;&#x5B50;&#x76EE;&#x5F55;&#x91CC;&#x7684;&#x9875;&#x9762;&#x90FD;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x8FD9;&#x4E2A;cookie&#x3002;&#x8FD9;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x5728;http://www.pc175.com/devhead/stories/articles">http://www.pc175.com/devhead/&#x76EE;&#x5F55;&#x91CC;&#x7684;&#x6240;&#x6709;&#x9875;&#x9762;&#xFF0C;&#x4EE5;&#x53CA;&#x8BE5;&#x76EE;&#x5F55;&#x4E0B;&#x9762;&#x4EFB;&#x4F55;&#x5B50;&#x76EE;&#x5F55;&#x91CC;&#x7684;&#x9875;&#x9762;&#x90FD;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;&#x8FD9;&#x4E2A;cookie&#x3002;&#x8FD9;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x5728;http://www.pc175.com/devhead/stories/articles</a> &#x91CC;&#x7684;&#x4EFB;&#x4F55;&#x9875;&#x9762;&#x90FD;&#x53EF;&#x4EE5;&#x8BBF;&#x95EE;<a href="http://www.pc175.com/devhead/index.html&#x5EFA;&#x7ACB;&#x7684;cookie&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x5982;&#x679C;http://www.pc175.com/zdnn/">http://www.pc175.com/devhead/index.html&#x5EFA;&#x7ACB;&#x7684;cookie&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x5982;&#x679C;http://www.pc175.com/zdnn/</a> &#x9700;&#x8981;&#x8BBF;&#x95EE;<a href="http://www.pc175.com/devhead/index.html&#x8BBE;&#x7F6E;&#x7684;cookes&#xFF0C;&#x8BE5;&#x600E;&#x4E48;&#x529E;&#xFF1F;&#x8FD9;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x8981;&#x628A;cookies">http://www.pc175.com/devhead/index.html&#x8BBE;&#x7F6E;&#x7684;cookes&#xFF0C;&#x8BE5;&#x600E;&#x4E48;&#x529E;&#xFF1F;&#x8FD9;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x8981;&#x628A;cookies</a> &#x7684;path&#x5C5E;&#x6027;&#x8BBE;&#x7F6E;&#x6210;&#x201C;/&#x201D;&#x3002;&#x5728;&#x6307;&#x5B9A;&#x8DEF;&#x5F84;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x51E1;&#x662F;&#x6765;&#x81EA;&#x540C;&#x4E00;&#x670D;&#x52A1;&#x5668;&#xFF0C;URL&#x91CC;&#x6709;&#x76F8;&#x540C;&#x8DEF;&#x5F84;&#x7684;&#x6240;&#x6709;WEB&#x9875;&#x9762;&#x90FD;&#x53EF;&#x4EE5;&#x5171;&#x4EAB;cookies&#x3002;&#x73B0;&#x5728;&#x770B;&#x53E6;&#x4E00;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;&#x5982;&#x679C;&#x60F3;&#x8BA9; <a href="http://www.pc175.com/devhead/filters/">http://www.pc175.com/devhead/filters/</a> &#x548C;<a href="http://www.pc175.com/devhead/stories/&#x5171;&#x4EAB;cookies&#xFF0C;&#x5C31;&#x8981;&#x628A;path&#x8BBE;&#x6210;&#x201C;/devhead&#x201D;&#x3002;">http://www.pc175.com/devhead/stories/&#x5171;&#x4EAB;cookies&#xFF0C;&#x5C31;&#x8981;&#x628A;path&#x8BBE;&#x6210;&#x201C;/devhead&#x201D;&#x3002;</a></td>
-<td style="text-align:left">&#x9ED8;&#x8BA4; <code>/</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>secure</code></td>
-<td style="text-align:left">&#x5B89;&#x5168;&#x3002;&#x6307;&#x5B9A;cookie&#x7684;&#x503C;&#x901A;&#x8FC7;&#x7F51;&#x7EDC;&#x5982;&#x4F55;&#x5728;&#x7528;&#x6237;&#x548C;WEB&#x670D;&#x52A1;&#x5668;&#x4E4B;&#x95F4;&#x4F20;&#x9012;&#x3002;&#x8FD9;&#x4E2A;&#x5C5E;&#x6027;&#x7684;&#x503C;&#x6216;&#x8005;&#x662F;&#x201C;secure&#x201D;&#xFF0C;&#x6216;&#x8005;&#x4E3A;&#x7A7A;&#x3002;&#x7F3A;&#x7701;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8BE5;&#x5C5E;&#x6027;&#x4E3A;&#x7A7A;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x4F7F;&#x7528;&#x4E0D;&#x5B89;&#x5168;&#x7684;HTTP&#x8FDE;&#x63A5;&#x4F20;&#x9012;&#x6570;&#x636E;&#x3002;&#x5982;&#x679C;&#x4E00;&#x4E2A; cookie &#x6807;&#x8BB0;&#x4E3A;secure&#xFF0C;&#x90A3;&#x4E48;&#xFF0C;&#x5B83;&#x4E0E;WEB&#x670D;&#x52A1;&#x5668;&#x4E4B;&#x95F4;&#x5C31;&#x901A;&#x8FC7;HTTPS&#x6216;&#x8005;&#x5176;&#x5B83;&#x5B89;&#x5168;&#x534F;&#x8BAE;&#x4F20;&#x9012;&#x6570;&#x636E;&#x3002;&#x4E0D;&#x8FC7;&#xFF0C;&#x8BBE;&#x7F6E;&#x4E86;secure&#x5C5E;&#x6027;&#x4E0D;&#x4EE3;&#x8868;&#x5176;&#x4ED6;&#x4EBA;&#x4E0D;&#x80FD;&#x770B;&#x5230;&#x4F60;&#x673A;&#x5668;&#x672C;&#x5730;&#x4FDD;&#x5B58;&#x7684;cookie&#x3002;&#x6362;&#x53E5;&#x8BDD;&#x8BF4;&#xFF0C;&#x628A;cookie&#x8BBE;&#x7F6E;&#x4E3A;secure&#xFF0C;&#x53EA;&#x4FDD;&#x8BC1;cookie&#x4E0E;WEB&#x670D;&#x52A1;&#x5668;&#x4E4B;&#x95F4;&#x7684;&#x6570;&#x636E;&#x4F20;&#x8F93;&#x8FC7;&#x7A0B;&#x52A0;&#x5BC6;&#xFF0C;&#x800C;&#x4FDD;&#x5B58;&#x5728;&#x672C;&#x5730;&#x7684;cookie&#x6587;&#x4EF6;&#x5E76;&#x4E0D;&#x52A0;&#x5BC6;&#x3002;&#x5982;&#x679C;&#x60F3;&#x8BA9;&#x672C;&#x5730;cookie&#x4E5F;&#x52A0;&#x5BC6;&#xFF0C;&#x5F97;&#x81EA;&#x5DF1;&#x52A0;&#x5BC6;&#x6570;&#x636E;&#x3002;</td>
-<td style="text-align:left"><code>false</code></td>
-</tr>
-</tbody>
-</table>
-<h1 id="&#x6D4B;&#x8BD5;&#x4F8B;&#x5B50;">&#x6D4B;&#x8BD5;&#x4F8B;&#x5B50; <a href="#&#x6D4B;&#x8BD5;&#x4F8B;&#x5B50;"> # </a></h1>
-<blockquote>
-<p>&#x5F00;&#x542F;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x8C03;&#x8BD5;&#x5DE5;&#x5177;&#xFF0C;&#x8C03;&#x8BD5;&#x770B;&#x6D4F;&#x89C8;&#x5668;&#x6570;&#x636E;&#x662F;&#x5426;&#x8BBE;&#x7F6E;&#x6210;&#x529F;&#xFF01;</p>
-</blockquote>
-<script type="text/javascript" src="https://rawgit.com/jaywcjlove/cookie.js/master/cookie.js"></script>
-
-<p><a href="javascript:getcookie()">&#x83B7;&#x53D6;&#x6240;&#x6709;cookie</a>&#xFF0C;
-<a href="javascript:cleancookie()">&#x6E05;&#x7A7A;cookie</a></p>
-<p><input type="text" id="cookieval" value=""> 
-<a href="javascript:setcookie()">&#x8BBE;&#x7F6E;cookie</a></p>
-<div id="cookieinfo"></div>
-
-<script type="text/javascript">
-    var val = document.getElementById("cookieval"),
-        inof = document.getElementById('cookieinfo');
-
-    val.value = '{"name1":"value1"}';
-    function getcookie(){
-        inof.innerHTML = JSON.stringify(cookie.all());
-    }
-    function setcookie(){
-        console.log('设置的键值对：',val.value)
-        cookie(JSON.parse(val.value))
-        inof.innerHTML = '设置成功！' +  val.value;
-    }
-    function cleancookie(){
-        cookie();
-        inof.innerHTML = '清空成功！';
-    }
-</script>
-
-        <div class="copyright">Powered by <a href="https://github.com/jaywcjlove/idoc" target="_blank">idoc</a>. Dependence <a href="https://nodejs.org">Node.js</a> run.</div>
-    </div>
-    
-</div>
-
-
-</body>
+    <h3 id="expires"><a class="anchor" aria-hidden="true" tabindex="-1" href="#expires"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>expires</h3>
+    <p>Define when the cookie will be removed. Value can be a Number which will be interpreted as days from time of creation or a Date instance. If omitted, the cookie becomes a session cookie.</p>
+    <pre class="language-js"><code class="language-js"><span class="token function">cookie</span><span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">,</span> <span class="token string">'value'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token string">'expires'</span><span class="token operator">:</span> <span class="token number">30</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+    <h3 id="path"><a class="anchor" aria-hidden="true" tabindex="-1" href="#path"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>path</h3>
+    <blockquote>
+      <p>Default: <code>/</code></p>
+    </blockquote>
+    <p>A String indicating the path where the cookie is visible.</p>
+    <pre class="language-js"><code class="language-js">cookie<span class="token punctuation">.</span><span class="token method function property-access">set</span><span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">,</span> <span class="token string">'value'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> path<span class="token operator">:</span> <span class="token string">''</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+cookie<span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// => 'value'</span>
+</code></pre>
+    <h3 id="domain"><a class="anchor" aria-hidden="true" tabindex="-1" href="#domain"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>domain</h3>
+    <blockquote>
+      <p>Default: Cookie is visible only to the domain or subdomain of the page where the cookie was created, except for Internet Explorer (<a href="https://blogs.msdn.microsoft.com/ieinternals/2009/08/20/internet-explorer-cookie-internals-faq/">see: Note regarding Internet Explorer default behavior</a>).<br>⚠️If you omit the domain attribute, it will be visible for a subdomain in IE.</p>
+    </blockquote>
+    <p>A String indicating a valid domain where the cookie should be visible. The cookie will also be visible to all subdomains.</p>
+    <p>Examples:</p>
+    <pre class="language-js"><code class="language-js">cookie<span class="token punctuation">.</span><span class="token method function property-access">set</span><span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">,</span> <span class="token string">'value'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> domain<span class="token operator">:</span> <span class="token string">'subdomain.website.com'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+cookie<span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// => undefined (need to read at 'subdomain.website.com')</span>
+</code></pre>
+    <h3 id="secure"><a class="anchor" aria-hidden="true" tabindex="-1" href="#secure"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>secure</h3>
+    <blockquote>
+      <p>Default: No secure protocol requirement.</p>
+    </blockquote>
+    <p>Either true or false, indicating if the cookie transmission requires a secure protocol (https).</p>
+    <p>Examples:</p>
+    <pre class="language-js"><code class="language-js">cookie<span class="token punctuation">.</span><span class="token method function property-access">set</span><span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">,</span> <span class="token string">'value'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> secure<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+cookie<span class="token punctuation">.</span><span class="token method function property-access">get</span><span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// => 'value'</span>
+cookie<span class="token punctuation">.</span><span class="token method function property-access">remove</span><span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+    <h2 id="license"><a class="anchor" aria-hidden="true" tabindex="-1" href="#license"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>License</h2>
+    <p>Licensed under the MIT License.</p>
+  </div></body>
 </html>
