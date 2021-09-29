@@ -9,6 +9,8 @@ JavaScript Cookie
 :cookie: 一个简单，轻量级的JavaScript API，用于处理浏览器cookie
 ，它易于上传和使用，具有合理的占用空间（~2kb）（gzip压缩：0.84kb），并且没有依赖性。 它不应该干扰任何JavaScript库或框架。
 
+> 老的 [v1](https://raw.githack.com/jaywcjlove/cookie.js/v1-doc/index.html) 版本。[文档预览](https://raw.githack.com/jaywcjlove/cookie.js/v1-doc/index.html)。
+
 **特性:**
 
 🚀 它没有任何依赖  

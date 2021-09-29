@@ -8,6 +8,8 @@ JavaScript Cookie
 
 :cookie: A simple, lightweight JavaScript API for handling browser cookies, it is easy to pick up and use, has a reasonable footprint (~2kb) (gzipped: 0.84kb), and has no dependencies. It should not interfere with any JavaScript libraries or frameworks.
 
+> Old [v1](https://raw.githack.com/jaywcjlove/cookie.js/v1-doc/index.html) version [document preview](https://raw.githack.com/jaywcjlove/cookie.js/v1-doc/index.html).
+
 **Features:**
 
 🚀 Has no dependencies  
