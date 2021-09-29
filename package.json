@@ -1,6 +1,6 @@
 {
   "name": "cookiejs",
-  "version": "1.0.26",
+  "version": "2.0.0",
   "description": "A simple, lightweight JavaScript API for handling browser cookies.",
   "homepage": "https://github.com/jaywcjlove/cookie.js",
   "main": "dist/cookie.cjs.js",
@@ -44,7 +44,7 @@
     "@rollup/plugin-node-resolve": "13.0.5",
     "bannerjs": "2.0.1",
     "colors-cli": "1.0.28",
-    "rollup": "2.57.0",
+    "rollup": "2.56.3",
     "rollup-plugin-terser": "7.0.2",
     "tsbb": "3.3.7",
     "zlib": "1.0.5"
