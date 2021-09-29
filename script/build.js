@@ -1,5 +1,5 @@
 const rollup = require('rollup');
-const babel = require('rollup-plugin-babel');
+const babel = require('@rollup/plugin-babel');
 const nodeResolve = require('@rollup/plugin-node-resolve');
 const commonjs = require('@rollup/plugin-commonjs');
 const { terser } = require('rollup-plugin-terser');
@@ -11,10 +11,11 @@ require('colors-cli/toxic');
 const inputOptions = {
   input: 'src/main.js',
   plugins: [
-    nodeResolve(),
+    nodeResolve.default(), // so Rollup can find `ms`
     commonjs(), // so Rollup can convert `ms` to an ES module
-    babel({
-      exclude: 'node_modules/**', // 只编译我们的源代码
+    babel.default({
+      babelHelpers: 'bundled'
+      // exclude: 'node_modules/**', // 只编译我们的源代码
     }),
   ],
 };
@@ -27,16 +28,16 @@ const inputOptions = {
     name: 'cookie',
     banner: banner.multibanner(),
   });
-  report(umd, 'dist/cookie.js');
+  report(umd, 'dist/store.js');
 
   const iife = await bundle.write({
     file: 'dist/cookie.min.js',
+    format: 'umd',
     name: 'cookie',
-    banner: banner.onebanner(),
-    format: 'iife',
+    banner: banner.multibanner(),
     plugins: [terser()]
   });
-  report(iife, 'dist/cookie.min.js');
+  report(iife, 'dist/store.min.js');
 
   const esm = await bundle.write({
     file: 'dist/cookie.esm.js',
@@ -44,15 +45,16 @@ const inputOptions = {
     name: 'cookie',
     banner: banner.multibanner(),
   });
-  report(esm, 'dist/cookie.esm.js');
+  report(esm, 'dist/store.esm.js');
 
   const cjs = await bundle.write({
     file: 'dist/cookie.cjs.js',
     format: 'cjs',
     name: 'cookie',
+    exports: 'default',
     banner: banner.multibanner(),
   });
-  report(cjs, 'dist/cookie.cjs.js');
+  report(cjs, 'dist/store.cjs.js');
 
 })();
 

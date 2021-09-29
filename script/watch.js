@@ -1,6 +1,6 @@
 const path = require('path');
 const rollup = require('rollup');
-const babel = require('rollup-plugin-babel');
+const babel = require('@rollup/plugin-babel');
 const nodeResolve = require('@rollup/plugin-node-resolve');
 const commonjs = require('@rollup/plugin-commonjs');
 const { terser } = require('rollup-plugin-terser');
@@ -10,7 +10,7 @@ require('colors-cli/toxic');
 const watchOptions = {
   input: 'src/main.js',
   output: [
-    { file: 'dist/cookie.cjs.js', name: 'cookie', format: 'cjs' },
+    { file: 'dist/cookie.cjs.js', name: 'cookie', format: 'cjs', exports: 'default', banner: banner.multibanner() },
     { file: 'dist/cookie.js', name: 'cookie', format: 'umd', banner: banner.multibanner() },
     { file: 'dist/cookie.esm.js', name: 'cookie', format: 'es', banner: banner.multibanner() },
     {
@@ -22,9 +22,10 @@ const watchOptions = {
     },
   ],
   plugins: [
-    nodeResolve(), // so Rollup can find `ms`
+    nodeResolve.default(), // so Rollup can find `ms`
     commonjs(), // so Rollup can convert `ms` to an ES module
-    babel({
+    babel.default({
+      babelHelpers: 'bundled',
       exclude: 'node_modules/**', // 只编译我们的源代码
     }),
   ],
@@ -49,3 +50,5 @@ watcher.on('event', (event) => {
   }
 });
 
+// stop watching
+// watcher.close();
