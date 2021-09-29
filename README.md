@@ -1,5 +1,5 @@
 JavaScript Cookie
----
+===
 
 [![Downloads](https://img.shields.io/npm/dm/cookiejs.svg?style=flat)](https://www.npmjs.com/package/cookiejs)
 [![Build & Test](https://github.com/jaywcjlove/cookie.js/actions/workflows/ci.yml/badge.svg)](https://github.com/jaywcjlove/cookie.js/actions/workflows/ci.yml)
@@ -153,6 +153,10 @@ cookie.set('name', 'value', { secure: true });
 cookie.get('name'); // => 'value'
 cookie.remove('name');
 ```
+
+## Related
+
+- [storejs](https://github.com/jaywcjlove/store.js) A simple, lightweight JavaScript API for handling browser localStorage , it is easy to pick up and use, has a reasonable footprint 2.36kb(gzipped: 1.04kb), and has no dependencies.
 
 ## License
 

@@ -1,5 +1,5 @@
 JavaScript Cookie
----
+===
 
 [![Downloads](https://img.shields.io/npm/dm/cookiejs.svg?style=flat)](https://www.npmjs.com/package/cookiejs)
 [![Build & Test](https://github.com/jaywcjlove/cookie.js/actions/workflows/ci.yml/badge.svg)](https://github.com/jaywcjlove/cookie.js/actions/workflows/ci.yml)
@@ -202,6 +202,10 @@ cookie.set('name', 'value', { secure: true });
 cookie.get('name'); // => 'value'
 cookie.remove('name');
 ```
+
+## Related
+
+- [storejs](https://github.com/jaywcjlove/store.js) 本地存储 localStorage 的封装，提供简单的API，没有依赖，压缩只有 2.08kb(gzipped: 0.97kb)。
 
 ### License
 
