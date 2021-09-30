@@ -14,10 +14,10 @@ JavaScript Cookie
 
 🚀 Has no dependencies  
 🌱 Works in all browsers  
-🍁 Support TypeScript, including [d.ts](index.d.ts) definition  
+🍁 Support TypeScript, including [d.ts](https://github.com/jaywcjlove/store.js/tree/master/types/index.d.ts) definition  
 🔥 Heavily tested  
 📦 Supports AMD/CommonJS  
-💥 [cookie.min.js](dist/cookie.min.js) 2.01kb(gzipped: 0.84kb)  
+💥 [cookie.min.js](https://github.com/jaywcjlove/cookie.js/tree/master/dist/cookie.min.js) 2.01kb(gzipped: 0.84kb)  
 
 ## Usage
 
