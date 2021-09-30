@@ -19,6 +19,7 @@ jobs:
     - run: npm i coverage-badges-cli markdown-to-html-cli -g
     - run: coverage-badges
     - run: markdown-to-html --output coverage/index.html
+    - run: markdown-to-html --source README-zh.md --output coverage/index.zh.html
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
