@@ -2,7 +2,7 @@ export interface CookieOptions {
   expires?: number;
   path?: string;
   domain?: string;
-  secure?: string;
+  secure?: boolean;
 }
 
 export interface CookieValues {
