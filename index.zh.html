@@ -209,6 +209,22 @@ cookie<span class="token punctuation">.</span><span class="token method function
 cookie.get(&#x27;name&#x27;); // => &#x27;value&#x27;
 cookie.remove(&#x27;name&#x27;);
 " class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+      <h3 id="samesite"><a class="anchor" aria-hidden="true" tabindex="-1" href="#samesite"><span class="octicon octicon-link"></span></a>SameSite</h3>
+      <p>SameSite Cookie 允许服务器要求某个 cookie 在跨站请求时不会被发送，（其中 <a href="https://developer.mozilla.org/en-US/docs/Glossary/Site">Site (en-US)</a> 由可注册域定义），从而可以阻止跨站请求伪造攻击（[CSRF](<a href="https://developer.mozilla.org/zh-CN/docs/Glossary/CSRF%EF%BC%89%E3%80%82">https://developer.mozilla.org/zh-CN/docs/Glossary/CSRF）。</a></p>
+      <p>SameSite cookies 是相对较新的一个字段，<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie#browser_compatibility">所有主流浏览器都已经得到支持</a>。</p>
+      <p>下面是例子：</p>
+      <pre class="language-js"><code class="language-js">cookie<span class="token punctuation">.</span><span class="token method function property-access">set</span><span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">,</span> <span class="token string">'value'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> sameSite<span class="token operator">:</span> <span class="token string">'Strict'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code><div onclick="copied(this)" data-code="cookie.set(&#x27;name&#x27;, &#x27;value&#x27;, { sameSite: &#x27;Strict&#x27; });
+" class="copied"><svg class="octicon-copy" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path><path fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path></svg><svg class="octicon-check" aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" height="12" width="12"><path fill-rule="evenodd" d="M13.78 4.22a.75.75 0 010 1.06l-7.25 7.25a.75.75 0 01-1.06 0L2.22 9.28a.75.75 0 011.06-1.06L6 10.94l6.72-6.72a.75.75 0 011.06 0z"></path></svg></div></pre>
+      <p>SameSite 可以有下面三种值：</p>
+      <ul>
+        <li><code>None</code>。浏览器会在同站请求、跨站请求下继续发送 cookies，不区分大小写。</li>
+        <li><code>Strict</code>。浏览器将只在访问相同站点时发送 cookie。（在原有 Cookies 的限制条件上的加强，如上文 “Cookie 的作用域” 所述）</li>
+        <li><code>Lax</code>。与 Strict 类似，但用户从外部站点导航至URL时（例如通过链接）除外。 在新版本浏览器中，为默认选项，Same-site cookies 将会为一些跨站子请求保留，如图片加载或者 frames 的调用，但只有当用户从外部站点导航到URL时才会发送。如 link 链接</li>
+      </ul>
+      <blockquote>
+        <p>以前，如果 SameSite 属性没有设置，或者没有得到运行浏览器的支持，那么它的行为等同于 None，Cookies 会被包含在任何请求中——包括跨站请求。<br>大多数主流浏览器正在将 <a href="https://www.chromestatus.com/feature/5088147346030592">SameSite 的默认值迁移至 Lax</a>。如果想要指定 Cookies 在同站、跨站请求都被发送，现在需要明确指定 SameSite 为 None。</p>
+      </blockquote>
       <h2 id="related"><a class="anchor" aria-hidden="true" tabindex="-1" href="#related"><span class="octicon octicon-link"></span></a>Related</h2>
       <ul>
         <li><a href="https://github.com/jaywcjlove/store.js">storejs</a> 本地存储 localStorage 的封装，提供简单的API，没有依赖，压缩只有 2.08kb(gzipped: 0.97kb)。</li>
