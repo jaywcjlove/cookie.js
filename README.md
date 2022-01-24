@@ -148,13 +148,31 @@ cookie.get('name'); // => undefined (need to read at 'subdomain.website.com')
 
 Either true or false, indicating if the cookie transmission requires a secure protocol (https).
 
-Examples:
+Here's an examples:
 
 ```js
 cookie.set('name', 'value', { secure: true });
 cookie.get('name'); // => 'value'
 cookie.remove('name');
 ```
+
+### SameSite
+
+The [SameSite](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite) attribute lets servers specify whether/when cookies are sent with cross-site requests (where [Site](https://developer.mozilla.org/en-US/docs/Glossary/Site) is defined by the registrable domain and the scheme: http or https). This provides some protection against cross-site request forgery attacks ([CSRF](https://developer.mozilla.org/en-US/docs/Glossary/CSRF)). It takes three possible values: Strict, Lax, and None.
+
+With Strict, the cookie is only sent to the site where it originated. Lax is similar, except that cookies are sent when the user navigates to the cookie's origin site. For example, by following a link from an external site. None specifies that cookies are sent on both originating and cross-site requests, but only in secure contexts (i.e., if `SameSite=None` then the Secure attribute must also be set). If no `SameSite` attribute is set, the cookie is treated as Lax.
+
+Here's an example:
+
+```js
+cookie.set('name', 'value', { sameSite: 'Strict' });
+```
+
+> Note: The standard related to `SameSite` recently changed (MDN documents the new behavior above). See the cookies [Browser compatibility](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite#browser_compatibility) table for information about how the attribute is handled in specific browser versions:
+> 
+> `SameSite=Lax` is the new default if `SameSite` isn't specified. Previously, cookies were sent for all requests by default.
+> - Cookies with `SameSite=None` must now also specify the `Secure` attribute (they require a secure context).
+> - Cookies from the same domain are no longer considered to be from the same site if sent using a different scheme (`http:` or `https:`).
 
 ## Related
 

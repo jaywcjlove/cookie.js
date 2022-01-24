@@ -3,6 +3,7 @@ export interface CookieOptions {
   path?: string;
   domain?: string;
   secure?: boolean;
+  sameSite?: 'None' | 'Strict' | 'Lax';
 }
 
 export interface CookieValues {

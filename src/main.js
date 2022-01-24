@@ -44,14 +44,14 @@ Cookie.prototype = {
   },
   set: function(name, value, options) {
     if (isPlainObject(name)) {
-      for (var k in name) {
+      for (const k in name) {
         this.set(k, name[k], value, options);
       }
     } else if (typeof name === 'string') {
-      var opt = isPlainObject(options) ? options : { expires: options },
+      const opt = isPlainObject(options) ? options : { expires: options },
         expires = opt.expires !== undefined ? opt.expires : '',
-          path = opt.path !== undefined ? ';path=' + opt.path : ';path=/',
-          domain = opt.domain ? ';domain=' + opt.domain : '',
+          path = opt.path !== undefined ? `;path=${opt.path};path=/` : ';path=/',
+          domain = opt.domain ? `;domain=${opt.domain}` : '',
           secure = opt.secure ? ';secure' : '';
 
         //过期时间
@@ -60,9 +60,10 @@ Cookie.prototype = {
       } else if (typeof expires === 'number') {
         expires = new Date(+new Date + 1000 * 60 * 60 * 24 * expires);
       } if (expires !== '' && 'toGMTString' in expires) {
-        expires = ';expires=' + expires.toGMTString();
+        expires = `;expires=${expires.toGMTString()}`;
       }
-      document.cookie = name+"="+encodeURI(value)+expires+path+domain+secure;   //转码并赋值    
+      const sameSite = opt.sameSite ? `;SameSite=${opt.sameSite}` : '';
+      document.cookie = `${name}=${encodeURI(value) + expires + path + domain + secure + sameSite}`; // 转码并赋值
     }
   },
   remove: function(names) {
