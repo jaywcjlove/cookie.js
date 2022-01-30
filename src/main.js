@@ -27,6 +27,7 @@ function Cookie(){
   };
 }
 Cookie.prototype = {
+  server: false,
   get: function(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');//把cookie分割成组    
@@ -49,10 +50,10 @@ Cookie.prototype = {
       }
     } else if (typeof name === 'string') {
       const opt = isPlainObject(options) ? options : { expires: options },
-        expires = opt.expires !== undefined ? opt.expires : '',
           path = opt.path !== undefined ? `;path=${opt.path};path=/` : ';path=/',
           domain = opt.domain ? `;domain=${opt.domain}` : '',
           secure = opt.secure ? ';secure' : '';
+      let expires = opt.expires !== undefined ? opt.expires : '';
 
         //过期时间
       if (typeof expires === 'string' && expires !== '') {
