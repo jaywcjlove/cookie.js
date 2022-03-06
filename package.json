@@ -52,7 +52,7 @@
     "colors-cli": "1.0.28",
     "rollup": "2.66.0",
     "rollup-plugin-terser": "7.0.2",
-    "tsbb": "3.5.4",
+    "tsbb": "3.7.2",
     "zlib": "1.0.5"
   }
 }
