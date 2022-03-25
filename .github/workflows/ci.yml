@@ -16,6 +16,8 @@ jobs:
     - run: npm install
     - run: npm run build
     - run: npm run coverage
+    - run: cp -p dist/*html coverage
+    - run: cp -p dist/*js coverage
 
     - run: npm i coverage-badges-cli markdown-to-html-cli -g
     - run: coverage-badges
