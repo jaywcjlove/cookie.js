@@ -6,6 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script src="./cookie.js"></script>
+  <style>
+    pre {
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  </style>
 </head>
 <body>
   <h3>Cookies: cookie()</h3>
@@ -15,9 +22,17 @@
     cookie('test3', 'tank3', 1);
     cookie.set('test4', 'tank4');
     cookie.set('test5', 'tank5');
-    const dom = document.createElement('div');
-    dom.innerHTML = JSON.stringify(cookie())
+    const dom = document.createElement('pre');
+    dom.innerHTML = JSON.stringify(cookie(), null, 2)
     document.body.appendChild(dom)
+  </script>
+  <h3>Cookies: cookie.all()</h3>
+  <script>
+    (() => {
+      const dom = document.createElement('pre');
+      dom.innerHTML = JSON.stringify(cookie(), null, 2)
+      document.body.appendChild(dom)
+    })();
   </script>
 </body>
 </html>
