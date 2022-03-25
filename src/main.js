@@ -27,7 +27,6 @@ function Cookie(){
   };
 }
 Cookie.prototype = {
-  server: false,
   get: function(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');//把cookie分割成组    
