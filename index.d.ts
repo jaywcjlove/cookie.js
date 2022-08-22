@@ -1,5 +1,5 @@
 export interface CookieOptions {
-  expires?: number;
+  expires?: number | Date | string;
   path?: string;
   domain?: string;
   secure?: boolean;
