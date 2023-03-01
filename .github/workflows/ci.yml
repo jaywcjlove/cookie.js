@@ -65,10 +65,10 @@ jobs:
             ${{ steps.changelog.outputs.changelog }}
 
 
-      - uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          package: ./package.json
+      # - uses: JS-DevTools/npm-publish@v1
+      #   with:
+      #     token: ${{ secrets.NPM_TOKEN }}
+      #     package: ./package.json
 
       # - run: npm install @jsdevtools/npm-publish -g
       # - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./package.json
