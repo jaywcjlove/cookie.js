@@ -30,7 +30,7 @@
     "prepare": "npm run build",
     "test": "tsbb test",
     "coverage": "tsbb test --coverage",
-    "build": "rollup -c rollup.config.js",
+    "build": "rollup -c rollup.config.js --bundleConfigAsCjs",
     "watch": "rollup -c rollup.config.js -w"
   },
   "markdown-to-html": {
@@ -40,13 +40,15 @@
     }
   },
   "devDependencies": {
-    "@atomico/rollup-plugin-sizes": "~1.1.4",
-    "@rollup/plugin-commonjs": "^22.0.2",
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-terser": "^0.4.0",
     "bannerjs": "2.1.0",
-    "rollup": "^2.78.1",
-    "rollup-plugin-terser": "^7.0.2",
-    "tsbb": "^3.7.6"
+    "rollup": "^3.17.3",
+    "tsbb": "^3.7.9"
+  },
+  "dependencies": {
+    "rollup-plugin-sizes": "^1.0.5"
   }
 }
