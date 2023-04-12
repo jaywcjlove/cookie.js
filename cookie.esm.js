@@ -3,7 +3,10 @@
  * A simple, lightweight JavaScript API for handling browser cookies. 
  * 
  * Copyright (c) 2023 kenny wong 
- * https://jaywcjlove.github.io/cookie.js/ 
+ * https://github.com/jaywcjlove/cookie.js.git 
+ * 
+ * @website: https://jaywcjlove.github.io/cookie.js/
+ 
  * Licensed under the MIT license 
  */
 
