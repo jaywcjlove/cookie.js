@@ -3,8 +3,11 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
 import json from '@rollup/plugin-json';
 import sizes from 'rollup-plugin-sizes';
-import banner from 'bannerjs';
-import pkg from './package.json';
+import * as banner from 'bannerjs';
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
+const pkg = require('./package.json');
 
 export default [
   {
