@@ -54,7 +54,7 @@ test('Clean all cookie', () => {
 test('Set cookie expires', () => {
   expect(cookie('test5', 'value5', { 'expires': '2023-08-13', path: '/' })).toBeUndefined();
   expect(cookie('test6', 'value6', { path: '/', secure: false })).toBeUndefined();
-  expect(cookie(null)).toEqual(['test5', 'test6']);
+  expect(cookie(null)).toEqual(['test6']);
   expect(cookie('test6', 'value6', { secure: true })).toBeUndefined();
   expect(cookie.get('test6')).toEqual(false);
   expect(cookie('test7', 'value7', { secure: false })).toBeUndefined();
