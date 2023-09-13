@@ -46,9 +46,7 @@
     "@rollup/plugin-terser": "^0.4.0",
     "bannerjs": "^3.0.1",
     "rollup": "^3.17.3",
+    "rollup-plugin-sizes": "^1.0.5",
     "tsbb": "^4.1.5"
-  },
-  "dependencies": {
-    "rollup-plugin-sizes": "^1.0.5"
   }
 }
