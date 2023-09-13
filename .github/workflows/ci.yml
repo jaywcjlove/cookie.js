@@ -20,24 +20,59 @@ jobs:
       - run: cp -p dist/*html coverage
       - run: cp -p dist/*js coverage
 
+      # - name: Converts Markdown to HTML
+      #   uses: jaywcjlove/markdown-to-html-cli@main
+      #   with:
+      #     source: README.md
+      #     output: coverage/index.html
+      #     github-corners: https://github.com/jaywcjlove/cookie.js
+      #     favicon: data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍪</text></svg>
+
+      # - name: Converts Markdown to HTML
+      #   uses: jaywcjlove/markdown-to-html-cli@main
+      #   with:
+      #     source: README-zh.md
+      #     output: coverage/index.zh.html
+      #     github-corners: https://github.com/jaywcjlove/cookie.js
+      #     favicon: data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍪</text></svg>
+
+      - name: Create idoc config.
+        run: |
+          cat > idoc.yml << EOF
+          site: "JavaScript Cookie {{version}}"
+          favicon: data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍪</text></svg>
+          output: build
+          menus:
+            Store.js: https://jaywcjlove.github.io/store.js/
+          giscus: 
+            src: https://giscus.app/client.js
+            data-repo: jaywcjlove/store.js
+            data-repo-id: MDEwOlJlcG9zaXRvcnkyNjgwMTc1Nw==
+            data-category: Q&A
+            data-category-id: DIC_kwDOAZj2Xc4CZRcC
+            data-mapping: pathname
+            data-strict: 0
+            data-reactions-enabled: 1
+            data-emit-metadata: 0
+            data-input-position: top
+            data-theme: dark
+            data-lang: zh-CN
+            data-loading: lazy
+            crossorigin: anonymous
+            async: true
+          EOF
+
+      - run: npm install idoc@1.27.0 -g
+      - run: idoc
+
+      - run: cp -rp coverage/lcov-report build
+      - run: cp -p dist/*html build
+      - run: cp -p dist/*js build
+      
       - name: Create Coverage Badges
         uses: jaywcjlove/coverage-badges-cli@main
-
-      - name: Converts Markdown to HTML
-        uses: jaywcjlove/markdown-to-html-cli@main
         with:
-          source: README.md
-          output: coverage/index.html
-          github-corners: https://github.com/jaywcjlove/cookie.js
-          favicon: data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍪</text></svg>
-
-      - name: Converts Markdown to HTML
-        uses: jaywcjlove/markdown-to-html-cli@main
-        with:
-          source: README-zh.md
-          output: coverage/index.zh.html
-          github-corners: https://github.com/jaywcjlove/cookie.js
-          favicon: data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍪</text></svg>
+          output: build/badges.svg
 
       - name: Create Tag
         id: create_tag
@@ -54,7 +89,7 @@ jobs:
         with:
           commit_message: ${{steps.tag_version.outputs.tag}} ${{ github.event.head_commit.message }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./coverage
+          publish_dir: ./build
 
       - name: Generate Changelog
         id: changelog
@@ -77,15 +112,6 @@ jobs:
             ${{ steps.changelog.outputs.compareurl }}
             
             ${{ steps.changelog.outputs.changelog }}
-
-
-      # - uses: JS-DevTools/npm-publish@v1
-      #   with:
-      #     token: ${{ secrets.NPM_TOKEN }}
-      #     package: ./package.json
-
-      # - run: npm install @jsdevtools/npm-publish -g
-      # - run: npm-publish --token="${{ secrets.NPM_TOKEN }}" ./package.json
 
       - name: 📦 cookiejs publish to NPM
         run: npm publish
