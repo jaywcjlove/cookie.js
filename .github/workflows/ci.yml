@@ -46,10 +46,10 @@ jobs:
             Store.js: https://jaywcjlove.github.io/store.js/
           giscus: 
             src: https://giscus.app/client.js
-            data-repo: jaywcjlove/store.js
-            data-repo-id: MDEwOlJlcG9zaXRvcnkyNjgwMTc1Nw==
+            data-repo: jaywcjlove/cookie.js
+            data-repo-id: MDEwOlJlcG9zaXRvcnkyNjkwMDgwOA==
             data-category: Q&A
-            data-category-id: DIC_kwDOAZj2Xc4CZRcC
+            data-category-id: DIC_kwDOAZp5SM4CZRf6
             data-mapping: pathname
             data-strict: 0
             data-reactions-enabled: 1
