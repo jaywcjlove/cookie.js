@@ -1,6 +1,7 @@
 JavaScript Cookie
 ===
 
+[![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-048754?logo=buymeacoffee)](https://jaywcjlove.github.io/#/sponsor)
 [![Downloads](https://img.shields.io/npm/dm/cookiejs.svg?style=flat)](https://www.npmjs.com/package/cookiejs)
 [![Build & Test](https://github.com/jaywcjlove/cookie.js/actions/workflows/ci.yml/badge.svg)](https://github.com/jaywcjlove/cookie.js/actions/workflows/ci.yml)
 [![Coverage Status](https://jaywcjlove.github.io/cookie.js/badges.svg)](https://jaywcjlove.github.io/cookie.js/lcov-report/)
@@ -177,6 +178,16 @@ cookie.set('name', 'value', { sameSite: 'Strict' });
 ## Related
 
 - [storejs](https://github.com/jaywcjlove/store.js) A simple, lightweight JavaScript API for handling browser localStorage , it is easy to pick up and use, has a reasonable footprint 2.36kb(gzipped: 1.04kb), and has no dependencies.
+
+## Contributors
+
+As always, thanks to our amazing contributors!
+
+<a href="https://github.com/jaywcjlove/cookie.js/graphs/contributors">
+  <img src="https://jaywcjlove.github.io/cookie.js/CONTRIBUTORS.svg" />
+</a>
+
+Made with [action-contributors](https://github.com/jaywcjlove/github-action-contributors).
 
 ## License
 

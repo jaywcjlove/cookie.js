@@ -3,6 +3,7 @@
   "version": "2.1.2",
   "description": "A simple, lightweight JavaScript API for handling browser cookies.",
   "homepage": "https://jaywcjlove.github.io/cookie.js/",
+  "funding": "https://jaywcjlove.github.io/#/sponsor",
   "main": "dist/cookie.cjs.js",
   "module": "dist/cookie.esm.js",
   "browser": "dist/cookie.js",
