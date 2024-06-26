@@ -2,7 +2,7 @@
  * cookiejs v2.1.3 
  * A simple, lightweight JavaScript API for handling browser cookies. 
  * 
- * Copyright (c) 2023 kenny wong 
+ * Copyright (c) 2024 kenny wong 
  * https://github.com/jaywcjlove/cookie.js.git 
  * 
  * @website: https://jaywcjlove.github.io/cookie.js/
