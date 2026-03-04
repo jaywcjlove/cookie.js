@@ -24,7 +24,7 @@ JavaScript Cookie
 
 [规范：DOM Level 2: HTMLDocument.cookie](https://www.w3.org/TR/DOM-Level-2-HTML/html.html#ID-8747038)  
 [MDN Cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies)  
-[MDN Cookies (Code snippets)](https://developer.mozilla.org/en-US/Add-ons/Code_snippets/Cookies)  
+[MDN Cookies (Code snippets)](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/Code_snippets/Cookies)  
 
 cookie虽然在持久保存客户端数据提供了方便，分担了服务器存储的负担，但还是有很多局限性的。 
 
