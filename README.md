@@ -1,6 +1,12 @@
 JavaScript Cookie
 ===
 
+[![npm version](https://img.shields.io/npm/v/cookiejs)](https://npmjs.com/package/cookiejs)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Discord](https://img.shields.io/badge/Discord-Zovo-blueviolet.svg?logo=discord)](https://discord.gg/zovo)
+[![Website](https://img.shields.io/badge/Website-zovo.one-blue)](https://zovo.one)
+[![GitHub Stars](https://img.shields.io/github/stars/theluckystrike/cookie.js?style=social)](https://github.com/theluckystrike/cookie.js)
+
 [![Buy me a coffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-048754?logo=buymeacoffee)](https://jaywcjlove.github.io/#/sponsor)
 [![Downloads](https://img.shields.io/npm/dm/cookiejs.svg?style=flat)](https://www.npmjs.com/package/cookiejs)
 [![Build & Test](https://github.com/jaywcjlove/cookie.js/actions/workflows/ci.yml/badge.svg)](https://github.com/jaywcjlove/cookie.js/actions/workflows/ci.yml)
@@ -192,3 +198,22 @@ Made with [action-contributors](https://github.com/jaywcjlove/github-action-cont
 ## License
 
 Licensed under the MIT License.
+
+---
+
+Built by [Zovo](https://zovo.one)
+
+### See Also
+
+### Related Zovo Repositories
+
+- [chrome-data-encrypt](https://github.com/theluckystrike/chrome-data-encrypt) - AES-256 encryption for extensions
+- [chrome-storage-plus](https://github.com/theluckystrike/chrome-storage-plus) - Type-safe storage wrapper
+- [webext-privacy-guard](https://github.com/theluckystrike/webext-privacy-guard) - Privacy utilities
+
+### Zovo Chrome Extensions
+
+- [Zovo Tab Manager](https://chrome.google.com/webstore/detail/zovo-tab-manager) - Manage tabs efficiently
+- [Zovo Focus](https://chrome.google.com/webstore/detail/zovo-focus) - Block distractions
+
+Visit [zovo.one](https://zovo.one) for more information.
